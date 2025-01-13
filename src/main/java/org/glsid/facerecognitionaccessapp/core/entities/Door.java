@@ -7,7 +7,8 @@ public record Door(
         String name,
         String description,
         Picture picture,
-        LocalDateTime created_at,
-        LocalDateTime updated_at
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {
+
 }
