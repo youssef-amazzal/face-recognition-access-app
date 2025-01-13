@@ -49,7 +49,8 @@ CREATE TABLE IF NOT EXISTS attempts (
     status VARCHAR(20) DEFAULT 'unknown' CHECK(status IN ('unknown', 'success', 'failure')),
     confidence FLOAT DEFAULT 0.0,
     reason TEXT, -- ex: 'face not recognized', 'expired permission', 'not allowed day', etc.
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -120,6 +121,13 @@ CREATE TRIGGER IF NOT EXISTS update_pictures_updated_at
     FOR EACH ROW
 BEGIN
     UPDATE pictures SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
+END;
+
+CREATE TRIGGER IF NOT EXISTS update_attempts_updated_at
+    AFTER UPDATE ON attempts
+    FOR EACH ROW
+BEGIN
+    UPDATE attempts SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
 END;
 
 CREATE TRIGGER IF NOT EXISTS update_user_permissions_updated_at
