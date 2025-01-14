@@ -9,4 +9,9 @@ public class Styles {
     static public String NORD_LIGHT = path + "AtlantaFX/nord-light.css";
     static public String PRIMER_DARK = path + "AtlantaFX/primer-dark.css";
     static public String PRIMER_LIGHT = path + "AtlantaFX/primer-light.css";
+
+    static public String DEFAULT = PRIMER_LIGHT;
+
+    static public String COMMON = path + "common.css";
+    static public String TITLE_BAR = path + "title_bar.css";
 }

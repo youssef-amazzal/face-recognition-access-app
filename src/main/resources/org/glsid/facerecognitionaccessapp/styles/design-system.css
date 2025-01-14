@@ -1,0 +1,462 @@
+/*Dark Palette*/
+.root {
+    background-color: #202020;
+    primary-color: #2b2b2b;
+    secondary-color: #3c3c3c;
+    accent-color: #ffde54;
+    hover-color: #464646;
+}
+
+/*Light Palette*/
+/*.root {*/
+/*    background-color: #f3f3f3;*/
+/*    primary-color: #fbfbfb;*/
+/*    secondary-color: #ececec;*/
+/*    accent-color: #ffde54;*/
+/*    hover-color: #eaeaea;*/
+/*}*/
+
+.root {
+    primary-font-color: ladder(background-color, white 49%, black 50%);
+    secondary-font-color: ladder(background-color, #cccccc 49%, #5c5c5c 50%);
+    accent-font-color: ladder(background-color, derive(accent-color, 15%) 49%, derive(accent-color, -15%) 50%);
+    accent-content-color: ladder(accent-color, white 69%, black 70%);
+}
+
+.root {
+    -fx-background-color: primary-color;
+    -fx-background-radius: 0.5em;
+}
+
+#container {
+    -fx-background-color: background-color;
+    -fx-background-radius: 1em 0 0.5em 0;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Headers and Paragraphs                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+.header {
+    -fx-text-fill: primary-font-color;
+}
+
+.paragraph,
+.paragraph .label{
+    -fx-wrap-text: true;
+    -fx-text-fill: secondary-font-color;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Hyperlink                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.hyperlink:hover,
+.hyperlink:hover:armed {
+    -fx-background-color: hover-color;
+    -fx-background-radius: 10%;
+}
+.hyperlink,
+.hyperlink:hover,
+.hyperlink:armed,
+.hyperlink:visited,
+.hyperlink:hover:armed,
+.hyperlink:hover:visited {
+    -fx-text-fill: accent-font-color;
+    -fx-underline: false;
+    -fx-border-width: 0px;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * card                                                                        *
+ *                                                                             *
+ ******************************************************************************/
+
+/*.card {*/
+/*    -fx-background-color: primary-color;*/
+/*    !*-fx-background-radius: 20;*!*/
+/*}*/
+
+
+
+/*
+==========================================================================================
+=                           Customize UI Elements                                        =
+==========================================================================================
+ */
+
+/*******************************************************************************
+ *                                                                             *
+ * Buttons                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+.button,
+.button .ikonli-font-icon,
+.toggle-button,
+.toggle-button .ikonli-font-icon {
+    -fx-background-color: accent-color;
+    -fx-text-fill: accent-content-color;
+    -fx-icon-color: accent-content-color;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 0.5em;
+    -fx-border-radius: 0.5em;
+}
+
+.button:hover,
+.arrow-button:hover,
+.toggle-button:hover {
+    -fx-effect: dropshadow(gaussian, accent-color, 5, 0.1, 0, 0);
+}
+
+.toggle-button:selected,
+.toggle-button .ikonli-font-icon {
+    -fx-background-color: derive(accent-color, -10%);
+    -fx-border-color: derive(accent-color, -20%);
+    -fx-border-width: 1;
+    -fx-text-fill: accent-content-color;
+    -fx-icon-color: accent-content-color;
+    -fx-font-weight: bold;
+}
+
+.check-box,
+.radio-button {
+    -fx-text-fill: secondary-font-color;
+    -fx-font-weight: bold;
+}
+
+.check-box > .box,
+.radio-button > .radio,
+.radio-button:focused > .radio  {
+    -fx-background-color: secondary-color;
+    -fx-border-color: ladder(secondary-color, derive(secondary-color,20%) 50%, derive(secondary-color, -20%) 50%);
+    -fx-border-width: 1;
+
+}
+.radio-button > .radio {
+    -fx-border-radius: 50%;
+}
+
+.check-box > .box {
+    -fx-border-radius: 0.5em;
+    -fx-background-radius: 0.5em;
+}
+
+.check-box:selected > .box,
+.radio-button:selected > .radio {
+    -fx-background-color: accent-color;
+    -fx-border-color: transparent;
+}
+
+.check-box:selected > .box > .mark,
+.radio-button:selected > .radio > .dot {
+    -fx-background-color: accent-content-color;
+}
+
+.button,
+.toggle-button,
+.arrow-button {
+    -fx-cursor: hand;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Text fields                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+.text-field {
+    -fx-background-color: secondary-color;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Separator                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.separator:vertical,
+.separator:horizontal {
+    -fx-border-color: transparent;
+    -fx-padding: 4;
+}
+.separator:vertical .line,
+.separator:horizontal .line {
+    -fx-border-color: AccentColor;
+    -fx-border-radius: 50%;
+    -fx-border-width: 1;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Scroll-pane and Scroll-bar                                                  *
+ *                                                                             *
+ ******************************************************************************/
+.scroll-pane {
+    -fx-background-color: PrimaryColor;
+    -fx-background: PrimaryColor;
+}
+
+.scroll-bar {
+    -fx-background-color: Transparent;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: -2 2;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: AlphaAccentColor;
+}
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: AccentColor;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Date-Picker                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+.date-picker,
+.date-picker > .text-field {
+    -fx-background-color: secondary-color;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: accent-color;
+}
+
+.date-picker > .arrow-button .arrow {
+    -fx-background-color: accent-content-color;
+}
+
+
+.date-picker-popup {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-background-color: secondary-color;
+    -fx-border-color: darkgray;
+    -fx-border-width: 0.5;
+    -fx-effect: null;
+}
+
+.date-picker-popup > .month-year-pane,
+.date-picker-popup > .calendar-grid {
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > * > .spinner > .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: primary-font-color;
+    -fx-min-width: 60;
+}
+
+.date-picker-popup > * > .spinner > .button:selected,
+.date-picker-popup > * > .spinner > .button:hover,
+.date-picker-popup > * > .spinner > .button:focused,
+.date-picker-popup > * > .spinner > .button {
+    -fx-background-insets: 0;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+    -fx-max-width: 20;
+    -fx-max-height: 20;
+    -fx-background-color: accent-color;
+}
+
+.date-picker-popup > * > .spinner > .button > .left-arrow,
+.date-picker-popup > * > .spinner > .button > .right-arrow {
+    -fx-background-color: accent-content-color;
+    -fx-border-color: accent-content-color;
+    -fx-border-width: 1;
+}
+
+.date-picker-popup > * > .date-cell {
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 50%;
+    -fx-font-size: 12;
+    -fx-min-height: 40;
+    -fx-min-width: 40;
+    -fx-max-height: 40;
+    -fx-max-width: 40;
+}
+
+.date-picker-popup > * > .day-name-cell {
+    -fx-text-fill: primary-font-color;
+}
+
+.date-picker-popup > * > .day-cell {
+    -fx-text-fill: primary-font-color;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup > * > .today .text {
+    -fx-fill: accent-font-color;
+    -fx-font-weight: bold;
+}
+
+
+.date-picker-popup > * > .day-cell:hover,
+.date-picker-popup > * > .day-cell:hover .text,
+.date-picker-popup > * > .today.selected .text,
+.date-picker-popup > * > .previous-month.selected .text,
+.date-picker-popup > * > .next-month.selected .text,
+.date-picker-popup > * > .previous-month.selected,
+.date-picker-popup > * > .next-month.selected,
+.date-picker-popup > * > .selected {
+    -fx-background-color: accent-color;
+    -fx-text-fill: accent-content-color;
+    -fx-fill: accent-content-color;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup > * > .previous-month .text,
+.date-picker-popup > * > .next-month .text {
+    -fx-fill: darkgrey;
+}
+
+.date-picker-popup > * > .previous-month.today .text,
+.date-picker-popup > * > .next-month.today .text {
+    -fx-fill: accent-color;
+}
+/*******************************************************************************
+ *                                                                             *
+ * SearchableComboBox                                                          *
+ *                                                                             *
+ ******************************************************************************/
+.searchable-combo-box .list-view {
+    -fx-background-color: PrimaryColor;
+    -fx-border-color: darkgrey;
+    -fx-border-width: 0.5;
+    -fx-effect: null;
+}
+
+.searchable-combo-box .list-view .list-cell {
+    -fx-background-color: transparent;
+}
+
+.searchable-combo-box .list-view .list-cell:hover,
+.searchable-combo-box .list-view .list-cell:hover .text {
+    -fx-background-color: AlphaAccentColor;
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+
+.searchable-combo-box .list-view .list-cell:selected,
+.searchable-combo-box .list-view .list-cell:selected .text {
+    -fx-background-color: AccentColor;
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+
+.searchable-combo-box {
+    -fx-prompt-text-fill: grey;
+    -fx-border-width: 1;
+    -fx-border-color: AccentColor;
+}
+
+.searchable-combo-box .arrow {
+    -fx-background-color: AccentColor;
+}
+
+.searchable-combo-box,
+.searchable-combo-box > * {
+    -fx-background-color: transparent;
+    -fx-border-radius: 50%;
+}
+
+.searchable-combo-box .image-view {
+    visibility:false;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Choice-Box                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+.choice-box {
+    -fx-background-color: transparent;
+}
+
+.choice-box .arrow {
+    -fx-background-color: AccentColor;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: PrimaryColor;
+    -fx-border-color: darkgrey;
+    -fx-border-width: 0.5;
+    -fx-effect: null;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: AccentColor;
+}
+
+.choice-box .menu-item:focused > .label {
+    -fx-text-fill: white;
+}
+
+.choice-box .menu-item:hover {
+    -fx-background-color: AlphaAccentColor;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Spinner                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+.spinner,
+.spinner > * {
+    -fx-background-color: secondary-color;
+    -fx-border-color: transparent;
+}
+
+.spinner > .increment-arrow-button,
+.spinner > .decrement-arrow-button {
+    -fx-background-color: accent-color;
+    -fx-cursor: hand;
+}
+
+.spinner > * > .increment-arrow,
+.spinner > * > .decrement-arrow {
+    -fx-background-color: accent-content-color;
+}
+.spinner .text-field {
+    -fx-alignment: center;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * RangeSlider                                                                 *
+ *                                                                             *
+ *                                                                             *
+ ******************************************************************************/
+.range-slider .low-thumb,
+.range-slider .high-thumb {
+    -fx-background-color: primary-font-color;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.1, 0, 1);
+}
+
+.range-slider .range-bar {
+    -fx-background-color: accent-color;
+}
+
+.range-slider .track {
+    -fx-background-color: secondary-color;
+}
+
+.range-slider:vertical .track {
+    -fx-background-color: secondary-color;
+}
+
+.range-slider .axis {
+    -fx-tick-label-fill: secondary-font-color;
+    /*-fx-tick-length: 5px;*/
+    /*-fx-minor-tick-length: 3px;*/
+    /*-fx-border-color: null;*/
+}
+
+
+/*=========================================================================================================*/

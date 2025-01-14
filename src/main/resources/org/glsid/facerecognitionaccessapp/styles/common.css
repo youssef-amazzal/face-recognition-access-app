@@ -1,0 +1,16 @@
+@import "AtlantaFX/primer-light.css";
+
+/*******************************************************************************
+ *                                                                             *
+ * Separator                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.separator:vertical,
+.separator:horizontal {
+    -fx-padding: 0;
+}
+.separator:vertical .line,
+.separator:horizontal .line {
+    -fx-border-width: 1;
+}
+
