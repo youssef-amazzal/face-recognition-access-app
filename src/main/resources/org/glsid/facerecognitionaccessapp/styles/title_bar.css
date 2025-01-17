@@ -1,4 +1,3 @@
-@import "common.css";
 /*******************************************************************************
  *                                                                             *
  * title-bar                                                                   *
@@ -21,4 +20,34 @@
 
 .title-bar .buttons-group .close-button:hover > .ikonli-font-icon {
     -fx-icon-color: -color-light;
+}
+
+
+.nav-bar-horizontal > * {
+    -fx-background-color: -color-bg-subtle;
+    -fx-background-radius: 50;
+    -fx-pref-width: 130;
+    -fx-padding: 10 20;
+    -fx-font-weight: bold;
+
+}
+
+.nav-bar-horizontal > *:hover {
+    -fx-background-color: -color-accent-muted;
+}
+
+.nav-bar-horizontal > *:selected {
+    -fx-background-color: -color-accent-emphasis;
+}
+
+.user-pfp {
+    -fx-background-image: url('https://www.gravatar.com/avatar/?d=mp&f=y&s=250');
+    -fx-background-size: cover;
+    -fx-background-radius: 50%;
+}
+
+.context-menu {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1;
 }

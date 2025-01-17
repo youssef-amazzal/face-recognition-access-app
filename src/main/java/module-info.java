@@ -1,10 +1,12 @@
 module org.glsid.facerecognitionaccessapp {
-    requires javafx.controls;
     requires javafx.fxml;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.materialdesign;
+    requires org.kordamp.ikonli.materialdesign2;
     requires java.sql;
+    requires javafx.controls;
+    requires java.desktop;
 
     exports org.glsid.facerecognitionaccessapp.presentation;
     exports org.glsid.facerecognitionaccessapp.presentation.views;

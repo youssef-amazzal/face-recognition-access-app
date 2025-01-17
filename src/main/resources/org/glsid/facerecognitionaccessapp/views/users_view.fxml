@@ -1,14 +1,670 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.ToggleSwitch?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.glsid.facerecognitionaccessapp.presentation.views.UsersViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox prefHeight="900.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox spacing="20.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="40.0" prefWidth="316.0">
+               <children>
+                  <Label styleClass="title-1" text="Users Management" />
+               </children>
+            </HBox>
+            <HBox spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField maxHeight="1.7976931348623157E308" promptText="Search" HBox.hgrow="ALWAYS" />
+                  <Separator orientation="VERTICAL" />
+                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" spacing="15.0">
+                     <children>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" text="Add New User" HBox.hgrow="ALWAYS">
+                           <styleClass>
+                              <String fx:value="accent" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                           <graphic>
+                              <FontIcon iconLiteral="mdi2a-account-plus" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefWidth="316.0" styleClass="my-card">
+               <children>
+                  <VBox maxWidth="-Infinity" prefWidth="308.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Status">
+                                 <styleClass>
+                                    <String fx:value="text-muted" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Label>
+                              <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="text-bold" text="Enabled" HBox.hgrow="ALWAYS" />
+                                    <ToggleButton layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="text-bold" text="Disabled" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Rooms">
+                                 <styleClass>
+                                    <String fx:value="text-muted" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Label>
+                              <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ComboBox maxWidth="1.7976931348623157E308" promptText="All Rooms" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="26.0" layoutY="107.0" spacing="5.0">
+                           <children>
+                              <Label text="Access Time">
+                                 <styleClass>
+                                    <String fx:value="text-muted" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Label>
+                              <HBox spacing="10.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="60.0" styleClass="text-bold" text="Reset Filters">
+                     <graphic>
+                        <FontIcon iconLiteral="mdi2r-refresh" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
+               <content>
+                  <VBox>
+                     <children>
+                        <HBox maxWidth="1.7976931348623157E308">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" styleClass="text-bolder" text="Selected (2)" />
+                                    <CheckBox layoutX="10.0" layoutY="17.0" mnemonicParsing="false" styleClass="text-bolder" text="Select All" />
+                                 </children>
+                              </HBox>
+                              <Pane HBox.hgrow="ALWAYS" />
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefWidth="100.0" text="Enable">
+                                       <styleClass>
+                                          <String fx:value="accent" />
+                                          <String fx:value="button-outlined" />
+                                          <String fx:value="text-bolder" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" text="Delete">
+                                       <styleClass>
+                                          <String fx:value="danger" />
+                                          <String fx:value="button-outlined" />
+                                          <String fx:value="text-bolder" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <FlowPane hgap="15.0" vgap="15.0">
+                           <children>
+                              <VBox prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card">
+                                 <children>
+                                    <Pane prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
+                                    <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                                                      <Label styleClass="text-muted" text="Owner" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <FlowPane hgap="5.0" prefWidth="200.0" vgap="10.0">
+                                             <children>
+                                                <Label styleClass="badge" text="Office" />
+                                                <Label layoutX="10.0" layoutY="10.0" styleClass="badge" text="Kitchen" />
+                                                <Label layoutX="60.0" layoutY="10.0" styleClass="badge" text="Hallway" />
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </FlowPane>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Last Attempt :" HBox.hgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                         <graphic>
+                                                            <FontIcon iconLiteral="mdi2c-clock" />
+                                                         </graphic>
+                                                      </Label>
+                                                      <Label text="3 hours ago" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator prefWidth="200.0" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <ToggleSwitch prefHeight="24.0" prefWidth="0.0" />
+                                                      <Label text="Disabled">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2d-delete" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="danger" />
+                                                      <String fx:value="button-outlined" />
+                                                      <String fx:value="button-icon" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="View">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2e-eye" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="accent" />
+                                                      <String fx:value="text-bold" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card">
+                                 <children>
+                                    <Pane prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
+                                    <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                                                      <Label styleClass="text-muted" text="Owner" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <FlowPane hgap="5.0" prefWidth="200.0" vgap="10.0">
+                                             <children>
+                                                <Label styleClass="badge" text="Office" />
+                                                <Label layoutX="10.0" layoutY="10.0" styleClass="badge" text="Kitchen" />
+                                                <Label layoutX="60.0" layoutY="10.0" styleClass="badge" text="Hallway" />
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </FlowPane>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Last Attempt :" HBox.hgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                         <graphic>
+                                                            <FontIcon iconLiteral="mdi2c-clock" />
+                                                         </graphic>
+                                                      </Label>
+                                                      <Label text="3 hours ago" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator prefWidth="200.0" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <ToggleSwitch prefHeight="24.0" prefWidth="0.0" />
+                                                      <Label text="Disabled">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2d-delete" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="danger" />
+                                                      <String fx:value="button-outlined" />
+                                                      <String fx:value="button-icon" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="View">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2e-eye" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="accent" />
+                                                      <String fx:value="text-bold" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="453.0" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card">
+                                 <children>
+                                    <Pane prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
+                                    <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                                                      <Label styleClass="text-muted" text="Owner" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <FlowPane hgap="5.0" prefWidth="200.0" vgap="10.0">
+                                             <children>
+                                                <Label styleClass="badge" text="Office" />
+                                                <Label layoutX="10.0" layoutY="10.0" styleClass="badge" text="Kitchen" />
+                                                <Label layoutX="60.0" layoutY="10.0" styleClass="badge" text="Hallway" />
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </FlowPane>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Last Attempt :" HBox.hgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                         <graphic>
+                                                            <FontIcon iconLiteral="mdi2c-clock" />
+                                                         </graphic>
+                                                      </Label>
+                                                      <Label text="3 hours ago" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator prefWidth="200.0" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <ToggleSwitch prefHeight="24.0" prefWidth="0.0" />
+                                                      <Label text="Disabled">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2d-delete" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="danger" />
+                                                      <String fx:value="button-outlined" />
+                                                      <String fx:value="button-icon" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="View">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2e-eye" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="accent" />
+                                                      <String fx:value="text-bold" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="620.0" layoutY="10.0" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card">
+                                 <children>
+                                    <Pane prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
+                                    <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                                                      <Label styleClass="text-muted" text="Owner" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <FlowPane hgap="5.0" prefWidth="200.0" vgap="10.0">
+                                             <children>
+                                                <Label styleClass="badge" text="Office" />
+                                                <Label layoutX="10.0" layoutY="10.0" styleClass="badge" text="Kitchen" />
+                                                <Label layoutX="60.0" layoutY="10.0" styleClass="badge" text="Hallway" />
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </FlowPane>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Last Attempt :" HBox.hgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                         <graphic>
+                                                            <FontIcon iconLiteral="mdi2c-clock" />
+                                                         </graphic>
+                                                      </Label>
+                                                      <Label text="3 hours ago" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator prefWidth="200.0" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <ToggleSwitch prefHeight="24.0" prefWidth="0.0" />
+                                                      <Label text="Disabled">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2d-delete" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="danger" />
+                                                      <String fx:value="button-outlined" />
+                                                      <String fx:value="button-icon" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="View">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2e-eye" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="accent" />
+                                                      <String fx:value="text-bold" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="315.0" layoutY="453.0" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card">
+                                 <children>
+                                    <Pane prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
+                                    <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                                                      <Label styleClass="text-muted" text="Owner" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <FlowPane hgap="5.0" prefWidth="200.0" vgap="10.0">
+                                             <children>
+                                                <Label styleClass="badge" text="Office" />
+                                                <Label layoutX="10.0" layoutY="10.0" styleClass="badge" text="Kitchen" />
+                                                <Label layoutX="60.0" layoutY="10.0" styleClass="badge" text="Hallway" />
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </FlowPane>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Last Attempt :" HBox.hgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                         <graphic>
+                                                            <FontIcon iconLiteral="mdi2c-clock" />
+                                                         </graphic>
+                                                      </Label>
+                                                      <Label text="3 hours ago" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator prefWidth="200.0" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <ToggleSwitch prefHeight="24.0" prefWidth="0.0" />
+                                                      <Label text="Disabled">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2d-delete" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="danger" />
+                                                      <String fx:value="button-outlined" />
+                                                      <String fx:value="button-icon" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="View">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2e-eye" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="accent" />
+                                                      <String fx:value="text-bold" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="896.0" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card">
+                                 <children>
+                                    <Pane prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
+                                    <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                                                      <Label styleClass="text-muted" text="Owner" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <FlowPane hgap="5.0" prefWidth="200.0" vgap="10.0">
+                                             <children>
+                                                <Label styleClass="badge" text="Office" />
+                                                <Label layoutX="10.0" layoutY="10.0" styleClass="badge" text="Kitchen" />
+                                                <Label layoutX="60.0" layoutY="10.0" styleClass="badge" text="Hallway" />
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </FlowPane>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                                   <children>
+                                                      <Label text="Last Attempt :" HBox.hgrow="ALWAYS">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                         <graphic>
+                                                            <FontIcon iconLiteral="mdi2c-clock" />
+                                                         </graphic>
+                                                      </Label>
+                                                      <Label text="3 hours ago" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator prefWidth="200.0" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <ToggleSwitch prefHeight="24.0" prefWidth="0.0" />
+                                                      <Label text="Disabled">
+                                                         <styleClass>
+                                                            <String fx:value="text-muted" />
+                                                            <String fx:value="text-bold" />
+                                                         </styleClass>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Button mnemonicParsing="false">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2d-delete" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="danger" />
+                                                      <String fx:value="button-outlined" />
+                                                      <String fx:value="button-icon" />
+                                                   </styleClass>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="View">
+                                                   <graphic>
+                                                      <FontIcon iconLiteral="mdi2e-eye" />
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="accent" />
+                                                      <String fx:value="text-bold" />
+                                                   </styleClass>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

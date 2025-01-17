@@ -8,8 +8,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.glsid.facerecognitionaccessapp.Constants.Styles;
-import org.glsid.facerecognitionaccessapp.Constants.Views;
+import org.glsid.facerecognitionaccessapp.presentation.Constants.Styles;
+import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
 
 import java.util.Objects;
 
@@ -20,15 +20,20 @@ public class GuiApplication extends Application {
         FXMLLoader loader = new FXMLLoader(GuiApplication.class.getResource(Views.WINDOW_VIEW));
         Parent root = loader.load();
         Scene scene = new Scene(root, Views.WIDTH, Views.HEIGHT);
-        Rectangle rect = new Rectangle(Views.WIDTH,Views.HEIGHT);
-        rect.setArcHeight(10.0);
-        rect.setArcWidth(10.0);
+
+        configWindow(primaryStage, root, scene);
+        primaryStage.show();
+    }
+
+    private static void configWindow(Stage primaryStage, Parent root, Scene scene) {
+        Rectangle rect = new Rectangle(Views.WIDTH, Views.HEIGHT);
+        rect.setArcHeight(20);
+        rect.setArcWidth(20);
         root.setClip(rect);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Face Recognition Access App");
         primaryStage.setScene(scene);
-        primaryStage.show();
     }
 
     public static void main(String[] args) {

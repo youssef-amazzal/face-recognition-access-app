@@ -3,10 +3,12 @@ package org.glsid.facerecognitionaccessapp.presentation.views;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.glsid.facerecognitionaccessapp.Constants.Styles;
-import org.glsid.facerecognitionaccessapp.Constants.Views;
+import org.glsid.facerecognitionaccessapp.presentation.Constants.Styles;
+import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
+import org.glsid.facerecognitionaccessapp.presentation.router.Router;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,20 +21,23 @@ public class WindowViewController implements Initializable {
     private VBox root;
 
     @FXML
-    private HBox titleBarContainer;
+    private HBox titleBarSlot;
 
     @FXML
-    private HBox viewContainer;
+    private VBox mainSlot;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             root.getStylesheets().add(Objects.requireNonNull(getClass().getResource(Styles.COMMON)).toExternalForm());
-            FXMLLoader tBarLoader = new FXMLLoader(getClass().getResource(Views.TITLE_BAR));
-            FXMLLoader faceCamLoader = new FXMLLoader(getClass().getResource(Views.FACE_CAM_VIEW));
 
-            titleBarContainer.getChildren().add(tBarLoader.load());
-//            viewContainer.getChildren().add(faceCamLoader.load());
+            Router router = new Router(mainSlot);
+
+            FXMLLoader tBarLoader = new FXMLLoader(getClass().getResource(Views.TITLE_BAR));
+            Node titleBar = tBarLoader.load();
+            titleBar.setUserData(router);
+            titleBarSlot.getChildren().add(titleBar);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

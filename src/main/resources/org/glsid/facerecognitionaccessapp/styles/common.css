@@ -1,4 +1,57 @@
-@import "AtlantaFX/primer-light.css";
+@import "AtlantaFX/primer-dark.css";
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('../fonts/Figtree/Figtree.ttf');
+}
+
+@font-face {
+    font-family: 'Figtree-Italic';
+    src: url('../fonts/Figtree/Figtree-Italic.ttf');
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Defaults                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+
+.root {
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+}
+
+.title-5 {
+    -fx-font-size: 1.2em;
+    -fx-font-weight: normal;
+}
+
+.text-bold {
+    -fx-font-weight: bold;
+}
+
+.text-small {
+    -fx-font-size: 14;
+}
+
+.ikonli-font-icon {
+    -fx-icon-size: 18;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Badges                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+.badge {
+    -fx-background-color: -color-accent-emphasis;
+    -fx-text-fill: -color-light;
+    -fx-font-weight: bold;
+    -fx-padding: 0 12;
+    -fx-background-radius: 10;
+}
+
 
 /*******************************************************************************
  *                                                                             *
@@ -12,5 +65,27 @@
 .separator:vertical .line,
 .separator:horizontal .line {
     -fx-border-width: 1;
+}
+
+
+.my-card {
+    -fx-background-color: -color-bg-inset;
+    -fx-border-color: -color-border-default;
+
+    /*-fx-background-color: -color-bg-subtle;*/
+    /*-fx-background-color: -color-bg-overlay;*/
+}
+
+.my-card-image {
+    /*-fx-background-image: url("https://www.google.com/images/srpr/logo3w.png");*/
+    -fx-background-image: url("https://www.gravatar.com/avatar/?d=mp&f=y&s=250");
+    -fx-background-size: cover;
+    /*-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);*/
+}
+
+.my-card,
+.my-card-image {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
 

@@ -10,6 +10,7 @@ public final class User {
     private String lastName;
     private String bio;
     private List<Picture> pictures;
+    private List<Permission> permissions;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
