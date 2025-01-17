@@ -9,7 +9,7 @@ module org.glsid.facerecognitionaccessapp {
     exports org.glsid.facerecognitionaccessapp.presentation;
     exports org.glsid.facerecognitionaccessapp.presentation.views;
     exports org.glsid.facerecognitionaccessapp.presentation.views.components;
-    exports org.glsid.facerecognitionaccessapp.Constants;
+    exports org.glsid.facerecognitionaccessapp.presentation.Constants;
     exports org.glsid.facerecognitionaccessapp.core.dto;
     exports org.glsid.facerecognitionaccessapp.core.entities;
     exports org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
@@ -17,5 +17,5 @@ module org.glsid.facerecognitionaccessapp {
     opens org.glsid.facerecognitionaccessapp.presentation to javafx.fxml;
     opens org.glsid.facerecognitionaccessapp.presentation.views to javafx.fxml;
     opens org.glsid.facerecognitionaccessapp.presentation.views.components to javafx.fxml;
-    opens org.glsid.facerecognitionaccessapp.Constants to javafx.fxml;
+    opens org.glsid.facerecognitionaccessapp.presentation.Constants to javafx.fxml;
 }

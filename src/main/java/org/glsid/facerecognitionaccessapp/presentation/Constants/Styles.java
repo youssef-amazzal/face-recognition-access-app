@@ -1,4 +1,4 @@
-package org.glsid.facerecognitionaccessapp.Constants;
+package org.glsid.facerecognitionaccessapp.presentation.Constants;
 
 public class Styles {
     static private final String path = "/org/glsid/facerecognitionaccessapp/styles/";
