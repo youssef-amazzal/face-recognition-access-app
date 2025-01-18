@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.ToggleSwitch?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox fx:id="root" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.glsid.facerecognitionaccessapp.presentation.views.components.UserCardController">
+   <children>
+      <Pane fx:id="userImageSlot" prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
+      <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">
+         <children>
+            <HBox>
+               <children>
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="fullNameLabel" maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                        <Label fx:id="roleLabel" styleClass="text-muted" text="Owner" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <FlowPane fx:id="roomSlot" hgap="5.0" prefWidth="200.0" vgap="10.0">
+               <children>
+                  <Label styleClass="badge" text="Office" />
+                  <Label layoutX="10.0" layoutY="10.0" styleClass="badge" text="Kitchen" />
+                  <Label layoutX="60.0" layoutY="10.0" styleClass="badge" text="Hallway" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </FlowPane>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label text="Last Attempt :" HBox.hgrow="ALWAYS">
+                           <styleClass>
+                              <String fx:value="text-muted" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                           <graphic>
+                              <FontIcon iconLiteral="mdi2c-clock" />
+                           </graphic>
+                        </Label>
+                        <Label fx:id="lastAttemptLabel" text="3 hours ago" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ToggleSwitch fx:id="activationSwitch" prefHeight="24.0" prefWidth="0.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ToggleSwitch>
+                        <Label text="Disabled">
+                           <styleClass>
+                              <String fx:value="text-muted" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Button fx:id="deleteBtn" mnemonicParsing="false">
+                     <graphic>
+                        <FontIcon iconLiteral="mdi2d-delete" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="danger" />
+                        <String fx:value="button-outlined" />
+                        <String fx:value="button-icon" />
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="viewBtn" mnemonicParsing="false" text="View">
+                     <graphic>
+                        <FontIcon iconLiteral="mdi2e-eye" />
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="accent" />
+                        <String fx:value="text-bold" />
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</VBox>

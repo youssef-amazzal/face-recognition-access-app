@@ -93,6 +93,7 @@ public class Router {
         try {
             return loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
             throw new ViewNotFound(view);
         }
     }

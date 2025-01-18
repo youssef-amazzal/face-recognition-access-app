@@ -22,6 +22,20 @@
     -fx-border-radius: 10;
 }
 
+
+.ikonli-font-icon {
+    -fx-icon-size: 18;
+}
+
+.surface {
+    -fx-background-color: -color-bg-inset;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Override                                                                    *
+ *                                                                             *
+ ******************************************************************************/
 .title-5 {
     -fx-font-size: 1.2em;
     -fx-font-weight: normal;
@@ -33,10 +47,6 @@
 
 .text-small {
     -fx-font-size: 14;
-}
-
-.ikonli-font-icon {
-    -fx-icon-size: 18;
 }
 
 /*******************************************************************************
@@ -64,7 +74,10 @@
 }
 .separator:vertical .line,
 .separator:horizontal .line {
-    -fx-border-width: 1;
+    -fx-background-color: -color-border-default;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 0.2;
+    -fx-effect: none;
 }
 
 
@@ -87,5 +100,49 @@
 .my-card-image {
     -fx-background-radius: 10;
     -fx-border-radius: 10;
+    -fx-border-width: 0;
 }
 
+.outlined {
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+}
+
+
+.reset-button, .reset-button .text {
+    -fx-background-color: -color-bg-subtle;
+    -fx-background-radius: 0 0 10 10;
+    -fx-underline: false;
+}
+
+.reset-button:hover .text {
+    -fx-underline: false;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * User Creation Css                                                           *
+ *                                                                             *
+ ******************************************************************************/
+.text-area .content {
+    -fx-background-color: transparent;
+}
+
+.step-panel {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.step-panel .ikonli-font-icon {
+    -fx-icon-color: -color-fg-subtle;
+    -fx-icon-size: 21;
+}
+
+.step-panel:selected,
+.step-panel:selected:focused,
+.step-panel:selected:focused .ikonli-font-icon,
+.step-panel:selected .ikonli-font-icon {
+    -fx-background-color: -color-bg-subtle;
+    -fx-icon-color: -color-accent-emphasis;
+}

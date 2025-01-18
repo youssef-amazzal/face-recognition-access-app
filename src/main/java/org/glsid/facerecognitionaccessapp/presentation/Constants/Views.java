@@ -11,6 +11,7 @@ public class Views {
     static public String ANALYTICS_VIEW = path + "analytics_view.fxml";
     static public String ROOMS_VIEW = path + "rooms_view.fxml";
     static public String USERS_VIEW = path + "users_view.fxml";
+    static public String USER_CREATION_VIEW = path + "user_creation_view.fxml";
     static public String FACE_CAM_VIEW = path + "face_cam_view.fxml";
 
 

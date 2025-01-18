@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Styles;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
+import org.glsid.facerecognitionaccessapp.presentation.events.ui.UiEvent;
 import org.glsid.facerecognitionaccessapp.presentation.router.Router;
 
 import java.io.IOException;
@@ -37,6 +38,11 @@ public class WindowViewController implements Initializable {
             Node titleBar = tBarLoader.load();
             titleBar.setUserData(router);
             titleBarSlot.getChildren().add(titleBar);
+
+            root.addEventHandler(UiEvent.TITLE_BAR_VISIBILITY_EVENT, event -> {
+                titleBarSlot.setVisible(event.isVisible());
+                titleBarSlot.setManaged(event.isVisible());
+            });
 
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -7,6 +7,7 @@ module org.glsid.facerecognitionaccessapp {
     requires java.sql;
     requires javafx.controls;
     requires java.desktop;
+    requires org.controlsfx.controls;
 
     exports org.glsid.facerecognitionaccessapp.presentation;
     exports org.glsid.facerecognitionaccessapp.presentation.views;
