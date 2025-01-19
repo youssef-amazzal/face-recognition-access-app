@@ -16,5 +16,5 @@ public class Views {
 
 
     public static final String TITLE_BAR = path + "components/title_bar.fxml";
-    public static final String NAV_BAR = path + "components/title_bar.fxml";
+    public static final String WINDOW_CONTROLS = path + "components/window_controls.fxml";
 }

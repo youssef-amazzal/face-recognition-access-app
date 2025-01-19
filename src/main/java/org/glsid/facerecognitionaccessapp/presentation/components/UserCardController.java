@@ -1,4 +1,4 @@
-package org.glsid.facerecognitionaccessapp.presentation.views.components;
+package org.glsid.facerecognitionaccessapp.presentation.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

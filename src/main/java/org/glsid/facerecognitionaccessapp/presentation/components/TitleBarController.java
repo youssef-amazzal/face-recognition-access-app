@@ -1,9 +1,10 @@
-package org.glsid.facerecognitionaccessapp.presentation.views.components;
+package org.glsid.facerecognitionaccessapp.presentation.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -12,6 +13,7 @@ import org.glsid.facerecognitionaccessapp.presentation.Constants.Styles;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
 import org.glsid.facerecognitionaccessapp.presentation.router.Router;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -23,19 +25,10 @@ public class TitleBarController implements Initializable {
     private ToggleButton analyticsBtn;
 
     @FXML
-    private Button closeBtn;
-
-    @FXML
     private ToggleButton logsBtn;
 
     @FXML
-    private Button minBtn;
-
-    @FXML
     private ToggleButton pfpBtn;
-
-    @FXML
-    private Button restMaxBtn;
 
     @FXML
     private ToggleButton roomsBtn;
@@ -45,6 +38,9 @@ public class TitleBarController implements Initializable {
 
     @FXML
     private ToggleButton usersBtn;
+
+    @FXML
+    private Pane windowControlsSlot;
 
     @FXML
     private Label windowTitle;
@@ -69,7 +65,11 @@ public class TitleBarController implements Initializable {
         rect.setArcWidth(10.0);
         root.setClip(rect);
 
-
+        try {
+            windowControlsSlot.getChildren().add(new WindowControlsComponent().getRoot());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     void initPfpBtn() {
@@ -108,19 +108,7 @@ public class TitleBarController implements Initializable {
         root.sceneProperty().addListener((_ -> analyticsBtn.fire()));
     }
 
-    @FXML
-    private void closeWindow() {
-        getStage().close();
-    }
 
-    @FXML
-    private void maximizeWindow() {
-        getStage().setMaximized(!getStage().isMaximized());
-    }
-    @FXML
-    private void minimizeWindow() {
-        getStage().setIconified(true);
-    }
 
     Stage getStage() {
         if (stage == null) {

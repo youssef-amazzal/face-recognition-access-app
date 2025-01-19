@@ -2,13 +2,13 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<HBox fx:id="root" alignment="CENTER_LEFT" prefWidth="1280.0" spacing="10.0" styleClass="title-bar" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.glsid.facerecognitionaccessapp.presentation.views.components.TitleBarController">
+<HBox fx:id="root" alignment="CENTER_LEFT" prefWidth="1280.0" spacing="10.0" styleClass="title-bar" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.glsid.facerecognitionaccessapp.presentation.components.TitleBarController">
    <children>
       <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefWidth="300.0" HBox.hgrow="ALWAYS">
          <children>
@@ -47,28 +47,10 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" maxWidth="-Infinity" prefWidth="300.0" HBox.hgrow="ALWAYS">
+      <HBox alignment="CENTER_RIGHT" maxWidth="-Infinity" prefWidth="300.0" spacing="10.0" HBox.hgrow="ALWAYS">
          <children>
-            <ToggleButton fx:id="pfpBtn" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="user-pfp" />
-            <HBox styleClass="buttons-group">
-               <children>
-                  <Button fx:id="minBtn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="30.0" prefWidth="50.0" HBox.hgrow="ALWAYS">
-                     <graphic>
-                        <FontIcon iconLiteral="mdi-window-minimize" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="restMaxBtn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#maximizeWindow" prefHeight="30.0" prefWidth="50.0">
-                     <graphic>
-                        <FontIcon iconLiteral="mdi-window-maximize" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="closeBtn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#closeWindow" prefHeight="30.0" prefWidth="50.0" styleClass="close-button">
-                     <graphic>
-                        <FontIcon iconLiteral="mdi-window-close" selectionEnd="0" />
-                     </graphic>
-                  </Button>
-               </children>
-            </HBox>
+            <ToggleButton fx:id="pfpBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="user-pfp" />
+            <Pane fx:id="windowControlsSlot" />
          </children>
       </HBox>
    </children>
