@@ -1,4 +1,4 @@
--- Appartement Database schema
+-- Apartment Database schema
 
 drop table if exists user_permissions;
 drop table if exists attempts_pictures;
@@ -17,6 +17,17 @@ CREATE TABLE IF NOT EXISTS doors (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    bio TEXT,
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 CREATE TABLE IF NOT EXISTS permissions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(100) NOT NULL,
@@ -26,19 +37,13 @@ CREATE TABLE IF NOT EXISTS permissions (
     start_time TIME DEFAULT '00:00', -- Time when the permission becomes active
     end_time TIME DEFAULT '23:59', -- Time when the permission expires
     allowed_days VARCHAR(30) DEFAULT 'mon,tue,wed,thu,fri,sat,sun', -- Days when the permission is valid
+    status VARCHAR(20) DEFAULT 'pending' CHECK(status IN ('pending', 'active', 'inactive')),
     door_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (door_id) REFERENCES doors(id)
-);
-
-CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    bio TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (door_id) REFERENCES doors(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 -- attempts_log: log of the attempts to access the doors
@@ -67,18 +72,6 @@ CREATE TABLE IF NOT EXISTS pictures (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (room_id) REFERENCES doors(id) ON DELETE CASCADE,
     FOREIGN KEY (attempt_id) REFERENCES attempts(id) ON DELETE CASCADE
-);
-
-
-CREATE TABLE IF NOT EXISTS user_permissions (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    permission_id INTEGER NOT NULL,
-    status VARCHAR(20) DEFAULT 'pending' CHECK(status IN ('pending', 'active', 'inactive')),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE
 );
 
 -- -- access_requests: requests from guests to access the doors
@@ -130,9 +123,3 @@ BEGIN
     UPDATE attempts SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
 END;
 
-CREATE TRIGGER IF NOT EXISTS update_user_permissions_updated_at
-    AFTER UPDATE ON user_permissions
-    FOR EACH ROW
-BEGIN
-    UPDATE user_permissions SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
-END;
