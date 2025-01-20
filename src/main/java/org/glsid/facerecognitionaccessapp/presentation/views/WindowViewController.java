@@ -6,8 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Styles;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
+import org.glsid.facerecognitionaccessapp.presentation.components.TitleBar;
 import org.glsid.facerecognitionaccessapp.presentation.events.ui.UiEvent;
 import org.glsid.facerecognitionaccessapp.presentation.router.Router;
 
@@ -29,23 +31,27 @@ public class WindowViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            root.getStylesheets().add(Objects.requireNonNull(getClass().getResource(Styles.COMMON)).toExternalForm());
+        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource(Styles.COMMON)).toExternalForm());
+        initTitleBar();
+    }
 
-            Router router = new Router(mainSlot);
+    void initTitleBar() {
+        root.sceneProperty().addListener((_, _, newScene) -> newScene.windowProperty().addListener((_, _, newWindow) -> {
+            try {
+                Router router = new Router(mainSlot);
+                Stage stage = (Stage) newWindow;
 
-            FXMLLoader tBarLoader = new FXMLLoader(getClass().getResource(Views.TITLE_BAR));
-            Node titleBar = tBarLoader.load();
-            titleBar.setUserData(router);
-            titleBarSlot.getChildren().add(titleBar);
+                Node titleBar = new TitleBar(stage, router).getRoot();
+                titleBar.setUserData(router);
+                titleBarSlot.getChildren().add(titleBar);
 
-            root.addEventHandler(UiEvent.TITLE_BAR_VISIBILITY_EVENT, event -> {
-                titleBarSlot.setVisible(event.isVisible());
-                titleBarSlot.setManaged(event.isVisible());
-            });
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+                root.addEventHandler(UiEvent.TITLE_BAR_VISIBILITY_EVENT, event -> {
+                    titleBarSlot.setVisible(event.isVisible());
+                    titleBarSlot.setManaged(event.isVisible());
+                });
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }));
     }
 }

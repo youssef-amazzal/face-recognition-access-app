@@ -8,15 +8,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.glsid.facerecognitionaccessapp.presentation.Constants.Styles;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
-
-import java.util.Objects;
 
 public class GuiApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource(Styles.DEFAULT)).toExternalForm());
         FXMLLoader loader = new FXMLLoader(GuiApplication.class.getResource(Views.WINDOW_VIEW));
         Parent root = loader.load();
         Scene scene = new Scene(root, Views.WIDTH, Views.HEIGHT);

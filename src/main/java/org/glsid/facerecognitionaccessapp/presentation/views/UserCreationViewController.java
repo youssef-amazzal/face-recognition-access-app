@@ -5,12 +5,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import org.glsid.facerecognitionaccessapp.presentation.events.ui.UiEvent;
+import org.glsid.facerecognitionaccessapp.presentation.router.RoutableView;
 import org.glsid.facerecognitionaccessapp.presentation.router.RouteData;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserCreationViewController implements Initializable {
+public class UserCreationViewController extends RoutableView implements Initializable {
 
     @FXML
     private VBox root;
