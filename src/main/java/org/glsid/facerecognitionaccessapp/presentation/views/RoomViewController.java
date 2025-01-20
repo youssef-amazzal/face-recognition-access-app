@@ -1,4 +1,6 @@
 package org.glsid.facerecognitionaccessapp.presentation.views;
 
-public class RoomViewController {
+import org.glsid.facerecognitionaccessapp.presentation.router.RoutableView;
+
+public class RoomViewController extends RoutableView {
 }

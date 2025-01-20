@@ -1,6 +1,7 @@
 package org.glsid.facerecognitionaccessapp.presentation.router;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 
 public abstract class RoutableView {
@@ -14,4 +15,6 @@ public abstract class RoutableView {
     protected Router getRouter() {
         return getRouteData().getRouter();
     }
+    public Node getRoot() {return root;}
+    public void close() {}
 }

@@ -3,6 +3,7 @@ package org.glsid.facerecognitionaccessapp.presentation.Constants;
 public class Views {
     static private final String views       = "/org/glsid/facerecognitionaccessapp/views/";
     static private final String components  = "/org/glsid/facerecognitionaccessapp/components/";
+    static private final String forms       = "/org/glsid/facerecognitionaccessapp/components/forms/";
 
     static public double WIDTH  = 1280;
     static public double HEIGHT = 900;
@@ -19,4 +20,8 @@ public class Views {
     public static final String TITLE_BAR        = components + "title_bar.fxml";
     public static final String USER_CARD        = components + "user_card.fxml";
     public static final String STEP_INDICATOR   = components + "step_indicator.fxml";
+
+    public static final String USER_INFO_FORM   = forms + "user_info_form.fxml";
+    public static final String USER_IMAGE_FORM  = forms + "user_image_form.fxml";
+
 }

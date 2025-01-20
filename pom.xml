@@ -68,7 +68,11 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.47.2.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>1.5.11</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

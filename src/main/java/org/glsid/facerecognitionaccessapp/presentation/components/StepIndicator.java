@@ -13,7 +13,6 @@ import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class StepIndicator extends Component implements Initializable {
@@ -29,14 +28,16 @@ public class StepIndicator extends Component implements Initializable {
     @FXML private FontIcon StepIcon;
     @FXML private Label StepNumber;
     @FXML private Label StepTitle;
+    private final Component content;
 
 
-    public StepIndicator(Icons icon, int stepNumber, String stepTitle) {
+    public StepIndicator(Icons icon, int stepNumber, String stepTitle, Component content) {
         super(Views.STEP_INDICATOR, Styles.STEP_INDICATOR);
 
         this.icon = icon;
         this.stepNumber = stepNumber;
         this.stepTitle = stepTitle;
+        this.content = content;
     }
 
     @Override
@@ -84,4 +85,7 @@ public class StepIndicator extends Component implements Initializable {
         this.active.set(active);
     }
 
+    public Component getContent() {
+        return content;
+    }
 }

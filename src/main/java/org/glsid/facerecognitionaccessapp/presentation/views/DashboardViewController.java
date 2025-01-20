@@ -1,4 +1,6 @@
 package org.glsid.facerecognitionaccessapp.presentation.views;
 
-public class DashboardViewController {
+import org.glsid.facerecognitionaccessapp.presentation.router.RoutableView;
+
+public class DashboardViewController extends RoutableView {
 }

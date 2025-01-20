@@ -1,5 +1,6 @@
 package org.glsid.facerecognitionaccessapp.presentation.components;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,20 +12,24 @@ public abstract class Component {
     private final String fxmlPath;
     private final String styleSheetPath;
 
-    protected Component(String fxmlPath) {
+    @FXML private Parent root;
+
+    public Component(String fxmlPath) {
         this.fxmlPath = fxmlPath;
         this.styleSheetPath = null;
     }
-    protected Component(String fxmlPath, String styleSheetPath) {
+    public Component(String fxmlPath, String styleSheetPath) {
         this.fxmlPath = fxmlPath;
         this.styleSheetPath = styleSheetPath;
     }
 
 
     public Node getRoot() throws IOException {
+        if (root != null) return root;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         loader.setController(this);
-        Parent root = loader.load();
+        root = loader.load();
         addStyleSheet(root);
         return root;
     }

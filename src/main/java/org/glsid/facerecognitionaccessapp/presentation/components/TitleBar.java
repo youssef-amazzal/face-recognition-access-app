@@ -16,13 +16,16 @@ import org.glsid.facerecognitionaccessapp.presentation.router.Router;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
+// TODO: Deconstruct into smaller components, this class is a violation to SRP
 public class TitleBar extends Component implements Initializable {
     private final ToggleGroup routesGroup = new ToggleGroup();
     private final Router router;
     private final Stage stage;
     private double xOffset = 0;
     private double yOffset = 0;
+    private final Stack<String> backStack = new Stack<>(); // TODO: this a workaround, fix the problem with a better solution
 
     @FXML private HBox root;
     @FXML private Button BackButton;
@@ -67,6 +70,7 @@ public class TitleBar extends Component implements Initializable {
     }
 
     public void showBackButton(String text) {
+        backStack.push(text);
         BackButton.setText(text);
         showComponent(BackButton);
         hideComponent(NavBar);
@@ -75,6 +79,11 @@ public class TitleBar extends Component implements Initializable {
     }
 
     private void hideBackButton() {
+        backStack.pop();
+        if (!backStack.isEmpty()) {
+            BackButton.setText(backStack.peek());
+            return;
+        }
         hideComponent(BackButton);
         showComponent(NavBar);
         showComponent(AppName);

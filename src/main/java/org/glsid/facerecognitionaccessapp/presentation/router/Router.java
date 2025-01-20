@@ -12,7 +12,7 @@ import org.glsid.facerecognitionaccessapp.presentation.exceptions.ViewNotFound;
 
 public class Router {
 //    private final static Map<Parent, Router> managerInstances = new HashMap<>();
-    private final Stack<Node> routeStack = new Stack<>();
+    private final Stack<RoutableView> routeStack = new Stack<>();
 //    private final Stack<RouteData> dataStack = new Stack<>();
     private final StringProperty activeRoute = new SimpleStringProperty();
     private final Pane slot;
@@ -54,9 +54,10 @@ public class Router {
 
     public void pop() {
         if (routeStack.size() > 1) {
-            routeStack.pop();
+            RoutableView view = routeStack.pop();
+            view.close();
 //            dataStack.pop();
-            slot.getChildren().setAll(routeStack.peek());
+            slot.getChildren().setAll(routeStack.peek().getRoot());
         }
     }
 
@@ -69,32 +70,23 @@ public class Router {
 //        return (T) dataStack.peek();
 //    }
 
-    private void loadAndDisplayView(String route, RouteData data) {
+    private void loadAndDisplayView(String fxmlFile, RouteData data) {
         try {
-            Node routeNode = loadView(route);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            loader.getController();
+            Node root = loader.load();
+            RoutableView view = loader.getController();
 
             data.setRouter(this);
-            routeNode.setUserData(data);
+            root.setUserData(data);
 
-
-            routeStack.push(routeNode);
+            routeStack.push(view);
 //            dataStack.push(data);
-            slot.getChildren().setAll(routeNode);
+            slot.getChildren().setAll(root);
 
-            activeRoute.set(route);
-        } catch (ViewNotFound viewNotFound) {
-            viewNotFound.printStackTrace();
-        }
-    }
-
-
-    private Node loadView(String view) throws ViewNotFound {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(view));
-        try {
-            return loader.load();
+            activeRoute.set(fxmlFile);
         } catch (IOException e) {
             e.printStackTrace();
-            throw new ViewNotFound(view);
         }
     }
 }

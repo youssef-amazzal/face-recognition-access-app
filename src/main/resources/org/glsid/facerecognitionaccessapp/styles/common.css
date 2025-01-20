@@ -24,6 +24,26 @@
     -fx-cursor: hand;
 }
 
+.rounded {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.rounded-bottom {
+    -fx-background-radius: 0 0 10 10;
+    -fx-border-radius: 0 0 10 10;
+}
+
+.circled {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+}
+
+.outlined {
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1;
+}
+
 /*******************************************************************************
  *                                                                             *
  * Text                                                                        *
@@ -106,11 +126,6 @@
     -fx-border-width: 0;
 }
 
-.outlined {
-    -fx-border-color: -color-border-default;
-    -fx-border-width: 1;
-    -fx-border-radius: 10;
-}
 
 
 .reset-button, .reset-button .text {
@@ -132,3 +147,20 @@
     -fx-background-color: transparent;
 }
 
+
+.capture-button,
+.capture-button .ikonli-font-icon {
+    -fx-background-color: -color-accent-emphasis;
+    -fx-icon-size: 42;
+    -fx-cursor: hand;
+}
+.capture-button:hover {
+    -fx-opacity: 0.9;
+}
+
+.drop-image,
+.drop-image .ikonli-font-icon {
+    -fx-background-color: -color-bg-subtle;
+    -fx-icon-size: 28;
+    -fx-icon-color: -color-neutral-emphasis;
+}

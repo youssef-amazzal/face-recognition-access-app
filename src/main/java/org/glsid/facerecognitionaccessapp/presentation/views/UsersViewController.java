@@ -20,7 +20,7 @@ public class UsersViewController extends RoutableView implements Initializable {
         addUserBtn.setOnAction(_ -> {
             MainRouteData data = (MainRouteData) root.getUserData();
             data.getTitleBar().showBackButton("Back to users");
-            getRouter().push(Views.USER_CREATION_VIEW);
+            getRouter().push(Views.USER_CREATION_VIEW, getRouteData());
         });
     }
 }
