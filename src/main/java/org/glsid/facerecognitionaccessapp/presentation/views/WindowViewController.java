@@ -42,13 +42,7 @@ public class WindowViewController implements Initializable {
                 Stage stage = (Stage) newWindow;
 
                 Node titleBar = new TitleBar(stage, router).getRoot();
-                titleBar.setUserData(router);
                 titleBarSlot.getChildren().add(titleBar);
-
-                root.addEventHandler(UiEvent.TITLE_BAR_VISIBILITY_EVENT, event -> {
-                    titleBarSlot.setVisible(event.isVisible());
-                    titleBarSlot.setManaged(event.isVisible());
-                });
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

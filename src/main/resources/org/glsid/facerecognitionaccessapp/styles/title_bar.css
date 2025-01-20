@@ -4,6 +4,26 @@
  *                                                                             *
  ******************************************************************************/
 
+.title-bar .buttons-group .button {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+.title-bar .buttons-group .button:hover {
+    -fx-background-color: -color-bg-subtle;
+}
+
+.title-bar .buttons-group .close-button:hover {
+    -fx-background-color: -color-danger-fg;
+    -fx-background-radius: 0 10 0 0;
+}
+
+.title-bar .buttons-group .close-button:hover > .ikonli-font-icon {
+    -fx-icon-color: -color-light;
+}
+
+
 .nav-bar-horizontal > * {
     -fx-background-color: -color-bg-subtle;
     -fx-background-radius: 50;
@@ -31,4 +51,14 @@
     -fx-background-color: -color-bg-subtle;
     -fx-border-color: -color-border-default;
     -fx-border-width: 1;
+}
+
+.title-bar .back-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.title-bar .back-button:hover {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
 }

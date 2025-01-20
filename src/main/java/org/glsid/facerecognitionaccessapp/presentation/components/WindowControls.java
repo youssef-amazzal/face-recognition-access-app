@@ -23,15 +23,7 @@ public class WindowControls extends Component implements Initializable {
         this.stage = stage;
     }
 
-    @FXML private void closeWindow() {
-        stage.close();
-    }
-    @FXML private void maximizeWindow() {
-        stage.setMaximized(!stage.isMaximized());
-    }
-    @FXML private void minimizeWindow() {
-        stage.setIconified(true);
-    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
