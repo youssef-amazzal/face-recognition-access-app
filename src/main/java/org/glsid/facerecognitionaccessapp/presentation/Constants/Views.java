@@ -18,6 +18,5 @@ public class Views {
 
     public static final String TITLE_BAR        = components + "title_bar.fxml";
     public static final String USER_CARD        = components + "user_card.fxml";
-    public static final String WINDOW_CONTROLS  = components + "window_controls.fxml";
     public static final String STEP_INDICATOR   = components + "step_indicator.fxml";
 }

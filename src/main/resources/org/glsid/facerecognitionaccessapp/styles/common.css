@@ -14,12 +14,14 @@
     -fx-border-radius: 10;
 }
 
-.ikonli-font-icon {
-    -fx-icon-size: 18;
-}
-
 .surface {
     -fx-background-color: -color-bg-inset;
+}
+
+.button,
+.toggle-switch,
+.toggle-button {
+    -fx-cursor: hand;
 }
 
 /*******************************************************************************
@@ -130,18 +132,3 @@
     -fx-background-color: transparent;
 }
 
-.step-indicator {
-    -fx-background-color: transparent;
-    -fx-border-width: 0;
-}
-
-.step-indicator .ikonli-font-icon {
-    -fx-icon-color: -color-fg-subtle;
-    -fx-icon-size: 21;
-}
-
-.step-indicator:done,
-.step-indicator:done .ikonli-font-icon {
-    -fx-background-color: -color-bg-subtle;
-    -fx-icon-color: -color-accent-emphasis;
-}

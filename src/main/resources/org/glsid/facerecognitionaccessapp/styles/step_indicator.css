@@ -1,0 +1,30 @@
+.step-indicator {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.step-indicator .ikonli-font-icon {
+    -fx-icon-color: -color-fg-subtle;
+    -fx-icon-size: 21;
+}
+
+.step-indicator:active,
+.step-indicator:active .ikonli-font-icon {
+    -fx-background-radius: 10;
+    -fx-background-color: -color-bg-subtle;
+    -fx-icon-color: -color-accent-fg;
+}
+
+.step-indicator:active .step-title {
+    -fx-text-fill: -color-accent-fg;
+}
+
+
+.step-indicator:done,
+.step-indicator:done .ikonli-font-icon {
+    -fx-icon-color: -color-accent-fg;
+}
+
+.step-indicator:done .step-title {
+    -fx-text-fill: -color-fg-subtle;
+}

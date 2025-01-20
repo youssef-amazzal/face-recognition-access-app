@@ -5,5 +5,5 @@ public class Styles {
 
     static public String COMMON             = path + "common.css";
     static public String TITLE_BAR          = path + "title_bar.css";
-    static public String WINDOW_CONTORLS    = path + "window_controls.css";
+    static public String STEP_INDICATOR     = path + "step_indicator.css";
 }

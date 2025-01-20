@@ -34,7 +34,7 @@
             </VBox>
             <HBox VBox.vgrow="ALWAYS">
                <children>
-                  <VBox fx:id="StepsSlot" alignment="TOP_RIGHT" prefWidth="238.0" spacing="20.0" />
+                  <VBox fx:id="StepIndicatorsSlot" alignment="TOP_RIGHT" prefWidth="238.0" spacing="20.0" />
                   <Pane HBox.hgrow="ALWAYS" />
                   <VBox fx:id="StepContentSlot" HBox.hgrow="ALWAYS">
                      <children>
