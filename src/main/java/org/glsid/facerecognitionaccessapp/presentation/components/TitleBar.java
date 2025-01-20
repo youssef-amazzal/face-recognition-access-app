@@ -15,45 +15,32 @@ import org.glsid.facerecognitionaccessapp.presentation.router.Router;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class TitleBarController implements Initializable {
-
-
-    @FXML
-    private ToggleButton analyticsBtn;
-
-    @FXML
-    private ToggleButton logsBtn;
-
-    @FXML
-    private ToggleButton pfpBtn;
-
-    @FXML
-    private ToggleButton roomsBtn;
-
-    @FXML
-    private HBox root;
-
-    @FXML
-    private ToggleButton usersBtn;
-
-    @FXML
-    private Pane windowControlsSlot;
-
-    @FXML
-    private Label windowTitle;
-
+public class TitleBar extends Component implements Initializable {
     private final ToggleGroup routesGroup = new ToggleGroup();
-    private Stage stage;
+    private final Router router;
+    private final Stage stage;
     private double xOffset = 0;
     private double yOffset = 0;
-    Router router;
+
+    @FXML private ToggleButton analyticsBtn;
+    @FXML private ToggleButton logsBtn;
+    @FXML private ToggleButton pfpBtn;
+    @FXML private ToggleButton roomsBtn;
+    @FXML private HBox root;
+    @FXML private ToggleButton usersBtn;
+    @FXML private Pane windowControlsSlot;
+    @FXML private Label windowTitle;
+
+    public TitleBar(Stage stage, Router router) {
+        super(Views.TITLE_BAR, Styles.TITLE_BAR);
+        this.router = router;
+        this.stage = stage;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource(Styles.TITLE_BAR)).toExternalForm());
         HBox.setHgrow(root, Priority.ALWAYS);
 
         initDraggability();
@@ -66,7 +53,8 @@ public class TitleBarController implements Initializable {
         root.setClip(rect);
 
         try {
-            windowControlsSlot.getChildren().add(new WindowControlsComponent().getRoot());
+            WindowControls windowControls = new WindowControls(stage);
+            windowControlsSlot.getChildren().add(windowControls.getRoot());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -86,8 +74,8 @@ public class TitleBarController implements Initializable {
             yOffset = event.getSceneY();
         });
         root.setOnMouseDragged(event -> {
-            getStage().setX(event.getScreenX() - xOffset);
-            getStage().setY(event.getScreenY() - yOffset);
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
         });
     }
 
@@ -101,26 +89,10 @@ public class TitleBarController implements Initializable {
             if (newVal == null) oldVal.setSelected(true);
         });
 
-        analyticsBtn.setOnAction(_ -> getRouter().go(Views.ANALYTICS_VIEW));
-        roomsBtn.setOnAction(_ -> getRouter().go(Views.ROOMS_VIEW));
-        usersBtn.setOnAction(_ -> getRouter().go(Views.USERS_VIEW));
+        analyticsBtn.setOnAction(_ -> router.go(Views.ANALYTICS_VIEW));
+        roomsBtn.setOnAction(_ -> router.go(Views.ROOMS_VIEW));
+        usersBtn.setOnAction(_ -> router.go(Views.USERS_VIEW));
 
         root.sceneProperty().addListener((_ -> analyticsBtn.fire()));
-    }
-
-
-
-    Stage getStage() {
-        if (stage == null) {
-            stage = (Stage) root.getScene().getWindow();
-        }
-        return stage;
-    }
-
-    private Router getRouter() {
-        if (router == null) {
-            router = (Router) root.getUserData();
-        }
-        return router;
     }
 }

@@ -13,7 +13,7 @@
 <?import org.controlsfx.control.ToggleSwitch?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox fx:id="root" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.glsid.facerecognitionaccessapp.presentation.components.UserCardController">
+<VBox fx:id="root" prefHeight="428.0" prefWidth="290.0" spacing="5.0" styleClass="my-card" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="userImageSlot" prefWidth="262.0" styleClass="my-card-image" VBox.vgrow="ALWAYS" />
       <VBox prefHeight="112.0" prefWidth="262.0" spacing="15.0">

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<HBox fx:id="root" alignment="CENTER_LEFT" prefWidth="1280.0" spacing="10.0" styleClass="title-bar" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.glsid.facerecognitionaccessapp.presentation.components.TitleBarController">
+<HBox fx:id="root" alignment="CENTER_LEFT" prefWidth="1280.0" spacing="10.0" styleClass="title-bar" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefWidth="300.0" HBox.hgrow="ALWAYS">
          <children>

@@ -21,4 +21,6 @@ module org.glsid.facerecognitionaccessapp {
     opens org.glsid.facerecognitionaccessapp.presentation.views to javafx.fxml;
     opens org.glsid.facerecognitionaccessapp.presentation.components to javafx.fxml;
     opens org.glsid.facerecognitionaccessapp.presentation.Constants to javafx.fxml;
+    exports org.glsid.facerecognitionaccessapp.presentation.router;
+    opens org.glsid.facerecognitionaccessapp.presentation.router to javafx.fxml;
 }

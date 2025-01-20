@@ -8,11 +8,12 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.ToggleSwitch;
+import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserCardController implements Initializable {
+public class UserCard extends Component implements Initializable {
 
     @FXML
     private ToggleSwitch activationSwitch;
@@ -41,9 +42,11 @@ public class UserCardController implements Initializable {
     @FXML
     private Button viewBtn;
 
+    protected UserCard() {
+        super(Views.USER_CARD);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
     }
 }
