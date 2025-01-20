@@ -1,11 +1,8 @@
 package org.glsid.facerecognitionaccessapp.core.exceptions;
 
+sealed public abstract class Try<T> permits Success, Failure {
 
-import java.util.function.Supplier;
-
-sealed public abstract class Maybe<T> permits Success, Failure {
-
-    public static <T> Maybe<T> apply(Supplier<T> function) {
+    public static <T> Try<T> apply(CheckedSupplier<T> function) {
         try {
             var result = function.get();
             return new Success<>(result);

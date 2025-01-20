@@ -2,7 +2,7 @@ package org.glsid.facerecognitionaccessapp.core.exceptions;
 
 import java.util.Optional;
 
-public final class Success<T> extends Maybe<T> {
+public final class Success<T> extends Try<T> {
     private final T t;
 
     public Success(T t) {

@@ -16,6 +16,7 @@ module org.glsid.facerecognitionaccessapp {
     exports org.glsid.facerecognitionaccessapp.core.dto;
     exports org.glsid.facerecognitionaccessapp.core.entities;
     exports org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
+    exports org.glsid.facerecognitionaccessapp.core.exceptions;
 
     opens org.glsid.facerecognitionaccessapp.presentation to javafx.fxml;
     opens org.glsid.facerecognitionaccessapp.presentation.views to javafx.fxml;
