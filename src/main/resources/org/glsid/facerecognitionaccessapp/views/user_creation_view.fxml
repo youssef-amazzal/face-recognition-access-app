@@ -8,11 +8,9 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <VBox fx:id="root" prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.glsid.facerecognitionaccessapp.presentation.views.UserCreationViewController">
    <children>
@@ -27,101 +25,14 @@
                         <String fx:value="text-bold" />
                      </styleClass>
                   </Label>
-                  <Label styleClass="title-1" text="General Inforamtion" />
+                  <Label fx:id="ActiveStepTitle" styleClass="title-1" text="General Inforamtion" />
                </children>
             </VBox>
             <HBox VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="TOP_RIGHT" prefWidth="238.0" spacing="20.0">
-                     <children>
-                        <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" styleClass="step-panel">
-                           <graphic>
-                              <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="10.0" styleClass="abbr">
-                                 <children>
-                                    <VBox alignment="CENTER" prefHeight="64.0">
-                                       <children>
-                                          <FontIcon iconLiteral="mdi2f-file-document" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                    <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Label text="Step 1">
-                                             <styleClass>
-                                                <String fx:value="text-bold" />
-                                                <String fx:value="text-subtle" />
-                                             </styleClass>
-                                          </Label>
-                                          <Label styleClass="text-bold" text="General Information" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </ToggleButton>
-                        <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" styleClass="step-panel">
-                           <graphic>
-                              <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="10.0" styleClass="abbr">
-                                 <children>
-                                    <VBox alignment="CENTER" prefHeight="64.0">
-                                       <children>
-                                          <FontIcon iconLiteral="mdi2f-face-recognition" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                    <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Label text="Step 2">
-                                             <styleClass>
-                                                <String fx:value="text-bold" />
-                                                <String fx:value="text-subtle" />
-                                             </styleClass>
-                                          </Label>
-                                          <Label styleClass="text-bold" text="Face Images" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </ToggleButton>
-                        <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="80.0" styleClass="step-panel">
-                           <graphic>
-                              <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="10.0" styleClass="abbr">
-                                 <children>
-                                    <VBox alignment="CENTER" prefHeight="64.0">
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                       <children>
-                                          <FontIcon iconLiteral="mdi2l-lock" />
-                                       </children>
-                                    </VBox>
-                                    <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Label text="Step 3">
-                                             <styleClass>
-                                                <String fx:value="text-bold" />
-                                                <String fx:value="text-subtle" />
-                                             </styleClass>
-                                          </Label>
-                                          <Label styleClass="text-bold" text="Permissions" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </ToggleButton>
-                     </children>
-                  </VBox>
+                  <VBox fx:id="StepsSlot" alignment="TOP_RIGHT" prefWidth="238.0" spacing="20.0" />
                   <Pane HBox.hgrow="ALWAYS" />
-                  <VBox HBox.hgrow="ALWAYS">
+                  <VBox fx:id="StepContentSlot" HBox.hgrow="ALWAYS">
                      <children>
                         <VBox prefHeight="536.0" prefWidth="479.0" spacing="20.0">
                            <children>
@@ -203,14 +114,20 @@
       <Separator prefWidth="200.0" />
       <HBox alignment="CENTER_RIGHT" prefHeight="110.0" prefWidth="1276.0" spacing="15.0" styleClass="surface">
          <children>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Previous">
+            <Button fx:id="PreviousButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Previous">
                <styleClass>
                   <String fx:value="accent" />
                   <String fx:value="button-outlined" />
                   <String fx:value="text-bold" />
                </styleClass>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Next">
+            <Button fx:id="NextButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Next">
+               <styleClass>
+                  <String fx:value="accent" />
+                  <String fx:value="text-bold" />
+               </styleClass>
+            </Button>
+            <Button fx:id="DoneButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Done">
                <styleClass>
                   <String fx:value="accent" />
                   <String fx:value="text-bold" />
