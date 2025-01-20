@@ -22,10 +22,14 @@
                      <styleClass>
                         <String fx:value="text-muted" />
                         <String fx:value="title-5" />
-                        <String fx:value="text-bold" />
+                        <String fx:value="text-demi-bold" />
                      </styleClass>
                   </Label>
-                  <Label fx:id="ActiveStepTitle" styleClass="title-1" text="General Inforamtion" />
+                  <Label fx:id="ActiveStepTitle" text="General Inforamtion">
+                     <styleClass>
+                        <String fx:value="title-1" />
+                        <String fx:value="text-heavy" />
+                     </styleClass></Label>
                </children>
             </VBox>
             <HBox VBox.vgrow="ALWAYS">

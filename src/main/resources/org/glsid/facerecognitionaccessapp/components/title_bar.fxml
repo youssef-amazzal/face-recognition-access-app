@@ -26,6 +26,7 @@
                <styleClass>
                   <String fx:value="title-3" />
                   <String fx:value="accent" />
+                  <String fx:value="text-extra-bold" />
                </styleClass>
             </Label>
          </children>

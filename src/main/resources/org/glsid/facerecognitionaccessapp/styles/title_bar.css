@@ -39,6 +39,7 @@
 
 .nav-bar-horizontal > *:selected {
     -fx-background-color: -color-accent-emphasis;
+    -fx-font-family: "Greycliff CF Bold";
 }
 
 .user-pfp {

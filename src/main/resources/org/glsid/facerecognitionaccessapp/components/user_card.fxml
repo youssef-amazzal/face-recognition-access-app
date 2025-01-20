@@ -22,7 +22,11 @@
                <children>
                   <VBox HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="fullNameLabel" maxWidth="1.7976931348623157E308" styleClass="title-3" text="Amazzal Youssef" />
+                        <Label fx:id="fullNameLabel" maxWidth="1.7976931348623157E308" text="Amazzal Youssef">
+                           <styleClass>
+                              <String fx:value="title-3" />
+                              <String fx:value="text-heavy" />
+                           </styleClass></Label>
                         <Label fx:id="roleLabel" styleClass="text-muted" text="Owner" />
                      </children>
                   </VBox>
@@ -68,7 +72,6 @@
                         <Label text="Disabled">
                            <styleClass>
                               <String fx:value="text-muted" />
-                              <String fx:value="text-bold" />
                            </styleClass>
                         </Label>
                      </children>

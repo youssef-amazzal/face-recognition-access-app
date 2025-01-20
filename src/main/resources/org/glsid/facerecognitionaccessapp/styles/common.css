@@ -1,14 +1,5 @@
 @import "AtlantaFX/primer-dark.css";
-
-@font-face {
-    font-family: 'Figtree';
-    src: url('../fonts/Figtree/Figtree.ttf');
-}
-
-@font-face {
-    font-family: 'Figtree-Italic';
-    src: url('../fonts/Figtree/Figtree-Italic.ttf');
-}
+@import "fonts.css";
 
 /*******************************************************************************
  *                                                                             *
@@ -17,11 +8,11 @@
  ******************************************************************************/
 
 .root {
+    -fx-font-family: "Greycliff CF Demi Bold";
     -fx-border-color: -color-border-default;
     -fx-border-width: 1.5;
     -fx-border-radius: 10;
 }
-
 
 .ikonli-font-icon {
     -fx-icon-size: 18;
@@ -33,7 +24,7 @@
 
 /*******************************************************************************
  *                                                                             *
- * Override                                                                    *
+ * Text                                                                        *
  *                                                                             *
  ******************************************************************************/
 .title-5 {
@@ -41,12 +32,22 @@
     -fx-font-weight: normal;
 }
 
-.text-bold {
-    -fx-font-weight: bold;
-}
-
 .text-small {
     -fx-font-size: 14;
+}
+
+.text-heavy {-fx-font-family: "Greycliff CF Heavy";}
+.text-extra-bold {-fx-font-family: "Greycliff CF Extra Bold";}
+.text-bold {-fx-font-family: "Greycliff CF Bold";}
+.text-demi-bold {-fx-font-family: "Greycliff CF Demi Bold";}
+.text-medium {-fx-font-family: "Greycliff CF Medium";}
+.text-regular {-fx-font-family: "Greycliff CF Regular";}
+.text-light {-fx-font-family: "Greycliff CF Light";}
+.text-extra-light {-fx-font-family: "Greycliff CF Extra Light";}
+.text-thin {-fx-font-family: "Greycliff CF Thin";}
+
+*.title-1 {
+    -fx-font-family: "Greycliff CF Heavy";
 }
 
 /*******************************************************************************
@@ -58,8 +59,8 @@
     -fx-background-color: -color-accent-emphasis;
     -fx-text-fill: -color-light;
     -fx-font-weight: bold;
-    -fx-padding: 0 12;
-    -fx-background-radius: 10;
+    -fx-padding: 4 12;
+    -fx-background-radius: 50;
 }
 
 
@@ -129,20 +130,18 @@
     -fx-background-color: transparent;
 }
 
-.step-panel {
+.step-indicator {
     -fx-background-color: transparent;
     -fx-border-width: 0;
 }
 
-.step-panel .ikonli-font-icon {
+.step-indicator .ikonli-font-icon {
     -fx-icon-color: -color-fg-subtle;
     -fx-icon-size: 21;
 }
 
-.step-panel:selected,
-.step-panel:selected:focused,
-.step-panel:selected:focused .ikonli-font-icon,
-.step-panel:selected .ikonli-font-icon {
+.step-indicator:done,
+.step-indicator:done .ikonli-font-icon {
     -fx-background-color: -color-bg-subtle;
     -fx-icon-color: -color-accent-emphasis;
 }

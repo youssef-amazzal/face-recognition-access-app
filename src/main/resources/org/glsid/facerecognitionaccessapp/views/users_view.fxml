@@ -23,7 +23,11 @@
          <children>
             <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="40.0" prefWidth="316.0">
                <children>
-                  <Label styleClass="title-1" text="Users Management" />
+                  <Label text="Users Management">
+                     <styleClass>
+                        <String fx:value="title-1" />
+                        <String fx:value="text-heavy" />
+                     </styleClass></Label>
                </children>
             </HBox>
             <HBox spacing="10.0" HBox.hgrow="ALWAYS">
@@ -120,8 +124,8 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" styleClass="text-bolder" text="Selected (2)" />
-                                    <CheckBox layoutX="10.0" layoutY="17.0" mnemonicParsing="false" styleClass="text-bolder" text="Select All" />
+                                    <CheckBox mnemonicParsing="false" styleClass="text-bold" text="Selected (2)" />
+                                    <CheckBox layoutX="10.0" layoutY="17.0" mnemonicParsing="false" styleClass="text-bold" text="Select All" />
                                  </children>
                               </HBox>
                               <Pane HBox.hgrow="ALWAYS" />
@@ -131,14 +135,14 @@
                                        <styleClass>
                                           <String fx:value="accent" />
                                           <String fx:value="button-outlined" />
-                                          <String fx:value="text-bolder" />
+                                          <String fx:value="text-bold" />
                                        </styleClass>
                                     </Button>
                                     <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" text="Delete">
                                        <styleClass>
                                           <String fx:value="danger" />
                                           <String fx:value="button-outlined" />
-                                          <String fx:value="text-bolder" />
+                                          <String fx:value="text-bold" />
                                        </styleClass>
                                     </Button>
                                  </children>
