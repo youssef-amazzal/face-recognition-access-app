@@ -8,6 +8,7 @@ module org.glsid.facerecognitionaccessapp {
     requires javafx.controls;
     requires org.controlsfx.controls;
     requires org.bytedeco.javacv;
+    requires org.bytedeco.opencv;
 
     exports org.glsid.facerecognitionaccessapp.presentation;
     exports org.glsid.facerecognitionaccessapp.presentation.views;
