@@ -8,9 +8,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import nu.pattern.OpenCV;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
 
 public class GuiApplication extends Application {
+    @Override
+    public void init() throws Exception {
+        super.init();
+        OpenCV.loadLocally();
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(GuiApplication.class.getResource(Views.WINDOW_VIEW));

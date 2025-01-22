@@ -5,84 +5,78 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import org.bytedeco.javacv.*;
-import org.bytedeco.opencv.opencv_core.Mat;
-import org.bytedeco.opencv.opencv_core.Rect;
-import org.bytedeco.opencv.opencv_core.Scalar;
+import org.glsid.facerecognitionaccessapp.core.utils.face_recognition.JavaFxImageConverter;
 import org.glsid.facerecognitionaccessapp.presentation.router.RoutableView;
-import org.glsid.facerecognitionaccessapp.core.utils.face_detection.HaarCascadeDetector;
-import org.glsid.facerecognitionaccessapp.core.utils.face_detection.IFaceDetector;
+import org.glsid.facerecognitionaccessapp.core.utils.face_recognition.impl.HaarCascadeDetector;
+import org.glsid.facerecognitionaccessapp.core.utils.face_recognition.IFaceDetector;
+import org.opencv.core.Mat;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.videoio.VideoCapture;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import static org.bytedeco.opencv.global.opencv_imgproc.rectangle;
 
 public class FaceCamViewController extends RoutableView implements Initializable {
 
     @FXML private StackPane root;
     @FXML private ImageView FrameView;
-    @FXML private ImageView CapturedImage;
-    @FXML private HBox CapturedImageSlot;
+    @FXML private final IFaceDetector faceDetector = new HaarCascadeDetector();
 
-    private static volatile Thread webCamThread;
-    private final IFaceDetector faceDetector = new HaarCascadeDetector();
+    private VideoCapture camera;
+    private Thread webCamThread;
+    private volatile boolean running;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         FrameView.fitHeightProperty().bind(root.heightProperty());
         FrameView.fitWidthProperty().bind(root.widthProperty());
+        startCamera();
+    }
 
-        webCamThread = new Thread(() -> {
-            final int DEFAULT_WEBCAM = 0;
-            try (
-                    OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(DEFAULT_WEBCAM);
-                    JavaFXFrameConverter converterJavaFX = new JavaFXFrameConverter();
-                    Java2DFrameConverter converter2D = new Java2DFrameConverter();
-                    OpenCVFrameConverter.ToMat toMatConverter = new OpenCVFrameConverter.ToMat()
-            ) {
-                grabber.start();
-
-                while (!Thread.interrupted()) {
-                    final Frame frame = grabber.grab();
-
-                    if (frame == null) break;
-                    if (frame.image != null) {
-                        final Frame imageFrame = frame.clone();
-                        final List<Rect> detectedFaces = faceDetector.apply(imageFrame);
-                        for (Rect face : detectedFaces) {
-                            rectangle(toMatConverter.convertToMat(imageFrame), face, Scalar.RED);
-                        }
-
-                        Platform.runLater(() -> {
-                            final Image image = converterJavaFX.convert(imageFrame);
-                            FrameView.setImage(image);
-                            imageFrame.close();
-                        });
+    private void startCamera() {
+        new Thread(() -> {
+            camera = new VideoCapture(0);
+            if (!camera.isOpened()) {
+                Platform.runLater(() -> {
+                    throw new RuntimeException("Failed to open camera.");
+                });
+                return;
+            }
+            running = true;
+            webCamThread = new Thread(() -> {
+                Mat frame = new Mat();
+                while (running) {
+                    if (camera.read(frame)) {
+                        Mat clonedFrame = frame.clone();
+                        Rect detectedFace = faceDetector.detectFace(clonedFrame);
+                        if (detectedFace != null) drawRect(clonedFrame, detectedFace);
+                        Image image = JavaFxImageConverter.toImage(clonedFrame);
+                        Platform.runLater(() -> FrameView.setImage(image));
                     }
-
-                    if (grabber.getFrameNumber() > 0) Thread.sleep(1000 / grabber.getFrameNumber());
-                    else Thread.sleep(1000 / 30);
                 }
+            });
+            webCamThread.setDaemon(true);
+            webCamThread.start();
+        }).start();
+    }
 
-                grabber.stop();
-                grabber.release();
-            } catch (FrameGrabber.Exception e) {
-                e.printStackTrace();
-            } catch (InterruptedException _) {}
-        });
-
-        webCamThread.setDaemon(true);
-        webCamThread.start();
+    private static void drawRect(Mat frame, Rect detectedFace) {
+        Imgproc.rectangle(frame, detectedFace.tl(), detectedFace.br(), new Scalar(255, 0, 0), 1);
     }
 
     @Override
     public void close() {
-        if (webCamThread != null) {
-            webCamThread.interrupt();
+        try {
+            Platform.runLater(() -> FrameView.setImage(null));
+            running = false;
+            if (webCamThread != null) webCamThread.join();
+            if (camera != null) camera.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
