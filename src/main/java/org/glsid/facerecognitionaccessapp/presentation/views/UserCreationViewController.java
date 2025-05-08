@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import org.glsid.facerecognitionaccessapp.application.usecases.CreateUser;
+import org.glsid.facerecognitionaccessapp.core.dto.ui.UserImageFxDTO;
 import org.glsid.facerecognitionaccessapp.core.exceptions.Try;
 import org.glsid.facerecognitionaccessapp.core.exceptions.Failure;
 import org.glsid.facerecognitionaccessapp.core.exceptions.Success;
@@ -44,6 +46,10 @@ public class UserCreationViewController extends RoutableView implements Initiali
     private final List<StepIndicator> steps = new ArrayList<>();
     private final ObjectProperty<StepIndicator> activeStep = new SimpleObjectProperty<>();
     private final SimpleListProperty<StepIndicator> history = new SimpleListProperty<>(FXCollections.observableArrayList());
+    private final CreateUser createUser = new CreateUser();
+
+    private UserInfoForm userInfoForm;
+    private UserImageForm userImageForm;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,17 +91,15 @@ public class UserCreationViewController extends RoutableView implements Initiali
 
     private void initDoneButton() {
         activeStep.addListener((_, _, newValue) -> toggleActivation(DoneButton, newValue.equals(steps.getLast())));
-        DoneButton.setOnAction(_ -> {
-            history.add(activeStep.get());
-            activeStep.get().setDone(true);
-            getRouter().pop();
-        });
+        DoneButton.setOnAction(_ -> onDone());
     }
 
     private void initSteps() {
-        steps.add(new StepIndicator(Icons.MDI_FILE_DOCUMENT, 1, "User Information", new UserInfoForm()));
-        steps.add(new StepIndicator(Icons.MDI_FACE_RECOGNITION, 2, "Face Images", new UserImageForm((MainRouteData) getRouteData())));
-        steps.add(new StepIndicator(Icons.MDI_LOCK, 3, "Permissions", new UserInfoForm()));
+        userInfoForm = new UserInfoForm();
+        userImageForm = new UserImageForm((MainRouteData) getRouteData());
+        steps.add(new StepIndicator(Icons.MDI_FILE_DOCUMENT, 1, "User Information", userInfoForm));
+        steps.add(new StepIndicator(Icons.MDI_FACE_RECOGNITION, 2, "Face Images", userImageForm));
+//        steps.add(new StepIndicator(Icons.MDI_LOCK, 3, "Permissions", new UserInfoForm()));
 
         List<Try<Node>> results = steps.stream().map(step -> Try.apply(step::getRoot)).toList();
         results.stream().filter(res -> res instanceof Failure<?>).forEach(result -> ((Failure<Node>) result).value().printStackTrace());
@@ -121,4 +125,17 @@ public class UserCreationViewController extends RoutableView implements Initiali
         component.setManaged(active);
     }
 
+    private void onDone() {
+        UserImageFxDTO user = new UserImageFxDTO(
+                userInfoForm.getFirstName(),
+                userInfoForm.getLastName(),
+                userInfoForm.getNotes(),
+                userImageForm.getImages()
+        );
+        createUser.use(user);
+
+        history.add(activeStep.get());
+        activeStep.get().setDone(true);
+        getRouter().pop();
+    }
 }

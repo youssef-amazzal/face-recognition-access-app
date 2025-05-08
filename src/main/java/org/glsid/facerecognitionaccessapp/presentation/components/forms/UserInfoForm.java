@@ -23,4 +23,16 @@ public class UserInfoForm extends Component {
     public UserInfoForm() {
         super(Views.USER_INFO_FORM);
     }
+
+    public String getFirstName() {
+        return FirstNameField.getText();
+    }
+
+    public String getLastName() {
+        return LastNameField.getText();
+    }
+
+    public String getNotes() {
+        return NotesArea.getText();
+    }
 }

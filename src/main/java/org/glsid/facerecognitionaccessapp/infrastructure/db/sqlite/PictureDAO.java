@@ -1,8 +1,10 @@
 package org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
 
 import org.glsid.facerecognitionaccessapp.core.dao.IPictureDAO;
-import org.glsid.facerecognitionaccessapp.core.dto.PictureDTO;
+import org.glsid.facerecognitionaccessapp.core.dto.db.PictureDTO;
 
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +19,21 @@ public class PictureDAO implements IPictureDAO {
 
     @Override
     public PictureDTO save(PictureDTO entity) {
-        String sql = "INSERT INTO pictures (name, picture_path, type, user_id, room_id, attempt_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pictures (name, picture_path, type, user_id, room_id, attempt_id, created_at, updated_at, embedding) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, entity.name());
             pstmt.setString(2, entity.picturePath());
             pstmt.setString(3, entity.type());
             pstmt.setLong(4, entity.userId());
             pstmt.setLong(5, entity.roomId());
-            pstmt.setLong(6, entity.attemptId());
+            if (entity.attemptId() != null) {
+                pstmt.setLong(6, entity.attemptId());
+            } else {
+                pstmt.setNull(6, Types.BIGINT);
+            }
             pstmt.setTimestamp(7, Timestamp.valueOf(entity.createdAt()));
             pstmt.setTimestamp(8, Timestamp.valueOf(entity.updatedAt()));
+            pstmt.setBytes(9, serializeEmbedding(entity.embeddings())); // Set the embedding field
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
@@ -36,6 +43,7 @@ public class PictureDAO implements IPictureDAO {
                                 entity.name(),
                                 entity.picturePath(),
                                 entity.type(),
+                                entity.embeddings(), // Add this field
                                 entity.userId(),
                                 entity.roomId(),
                                 entity.attemptId(),
@@ -53,7 +61,7 @@ public class PictureDAO implements IPictureDAO {
 
     @Override
     public void update(PictureDTO entity) {
-        String sql = "UPDATE pictures SET name = ?, picture_path = ?, type = ?, user_id = ?, room_id = ?, attempt_id = ?, updated_at = ? WHERE id = ?";
+        String sql = "UPDATE pictures SET name = ?, picture_path = ?, type = ?, user_id = ?, room_id = ?, attempt_id = ?, updated_at = ?, embedding = ? WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, entity.name());
             pstmt.setString(2, entity.picturePath());
@@ -62,7 +70,8 @@ public class PictureDAO implements IPictureDAO {
             pstmt.setLong(5, entity.roomId());
             pstmt.setLong(6, entity.attemptId());
             pstmt.setTimestamp(7, Timestamp.valueOf(entity.updatedAt()));
-            pstmt.setLong(8, entity.id());
+            pstmt.setBytes(8, serializeEmbedding(entity.embeddings())); // Set the embedding field
+            pstmt.setLong(9, entity.id());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,6 +122,7 @@ public class PictureDAO implements IPictureDAO {
         return pictures;
     }
 
+
     @Override
     public PictureDTO RsToDTO(ResultSet rs) throws SQLException {
         return new PictureDTO(
@@ -120,11 +130,48 @@ public class PictureDAO implements IPictureDAO {
                 rs.getString("name"),
                 rs.getString("picture_path"),
                 rs.getString("type"),
+                deserializeEmbedding(rs.getBytes("embedding")),
                 rs.getLong("user_id"),
                 rs.getLong("room_id"),
                 rs.getLong("attempt_id"),
                 rs.getTimestamp("created_at").toLocalDateTime(),
                 rs.getTimestamp("updated_at").toLocalDateTime()
+                 // Retrieve the embedding field
         );
+    }
+
+    private byte[] serializeEmbedding(float[] embedding) {
+        // Convert float[] to byte[]
+        ByteBuffer byteBuffer = ByteBuffer.allocate(embedding.length * Float.BYTES);
+        for (float value : embedding) {
+            byteBuffer.putFloat(value);
+        }
+        return byteBuffer.array();
+    }
+
+    private float[] deserializeEmbedding(byte[] bytes) {
+        // Convert byte[] to float[]
+        FloatBuffer floatBuffer = ByteBuffer.wrap(bytes).asFloatBuffer();
+        float[] embedding = new float[floatBuffer.remaining()];
+        floatBuffer.get(embedding);
+        return embedding;
+    }
+
+    @Override
+    public List<PictureDTO> findByUserId(Long userId) {
+        String sql = "SELECT * FROM pictures WHERE user_id = ?";
+        List<PictureDTO> pictures = new ArrayList<>();
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setLong(1, userId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    PictureDTO picture = RsToDTO(rs);
+                    pictures.add(picture);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pictures;
     }
 }

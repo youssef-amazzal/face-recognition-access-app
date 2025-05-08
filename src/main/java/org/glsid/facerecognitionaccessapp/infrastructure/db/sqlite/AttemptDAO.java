@@ -1,6 +1,6 @@
 package org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
 
-import org.glsid.facerecognitionaccessapp.core.dto.AttemptDTO;
+import org.glsid.facerecognitionaccessapp.core.dto.db.AttemptDTO;
 import org.glsid.facerecognitionaccessapp.core.dao.IAttemptDAO;
 
 import java.sql.*;

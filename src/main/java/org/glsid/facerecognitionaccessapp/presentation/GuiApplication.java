@@ -30,8 +30,6 @@ public class GuiApplication extends Application {
 
     private static void configWindow(Stage primaryStage, Parent root, Scene scene) {
         Rectangle rect = new Rectangle(Views.WIDTH, Views.HEIGHT);
-//        rect.widthProperty().bind(scene.widthProperty());
-//        rect.widthProperty().bind(scene.widthProperty());
         rect.setArcHeight(20);
         rect.setArcWidth(20);
         root.setClip(rect);

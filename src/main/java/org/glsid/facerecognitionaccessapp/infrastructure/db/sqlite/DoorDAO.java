@@ -1,7 +1,7 @@
 package org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
 
 import org.glsid.facerecognitionaccessapp.core.dao.IDoorDAO;
-import org.glsid.facerecognitionaccessapp.core.dto.DoorDTO;
+import org.glsid.facerecognitionaccessapp.core.dto.db.DoorDTO;
 
 import java.sql.*;
 import java.util.ArrayList;

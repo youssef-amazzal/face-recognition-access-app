@@ -7,15 +7,16 @@ module org.glsid.facerecognitionaccessapp {
     requires java.sql;
     requires javafx.controls;
     requires org.controlsfx.controls;
-    requires org.bytedeco.javacv;
-    requires org.bytedeco.opencv;
+    requires libtensorflow;
+    requires java.desktop;
+    requires tensorflow;
+    requires opencv;
 
     exports org.glsid.facerecognitionaccessapp.presentation;
     exports org.glsid.facerecognitionaccessapp.presentation.views;
     exports org.glsid.facerecognitionaccessapp.presentation.components;
     exports org.glsid.facerecognitionaccessapp.presentation.components.forms;
     exports org.glsid.facerecognitionaccessapp.presentation.Constants;
-    exports org.glsid.facerecognitionaccessapp.core.dto;
     exports org.glsid.facerecognitionaccessapp.core.entities;
     exports org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
     exports org.glsid.facerecognitionaccessapp.core.exceptions;
@@ -27,4 +28,5 @@ module org.glsid.facerecognitionaccessapp {
     opens org.glsid.facerecognitionaccessapp.presentation.Constants to javafx.fxml;
     exports org.glsid.facerecognitionaccessapp.presentation.router;
     opens org.glsid.facerecognitionaccessapp.presentation.router to javafx.fxml;
+    exports org.glsid.facerecognitionaccessapp.core.dto.db;
 }

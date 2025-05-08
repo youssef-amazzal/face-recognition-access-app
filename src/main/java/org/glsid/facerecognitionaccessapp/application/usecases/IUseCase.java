@@ -4,5 +4,5 @@ import java.util.Optional;
 
 @FunctionalInterface
 public interface IUseCase<I, O> {
-    Optional<O> execute(I input);
+    O execute(I input);
 }

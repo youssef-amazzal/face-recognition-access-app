@@ -1,7 +1,6 @@
 package org.glsid.facerecognitionaccessapp.core.dao;
 
-import org.glsid.facerecognitionaccessapp.core.dto.AttemptDTO;
-import org.glsid.facerecognitionaccessapp.core.entities.Attempt;
+import org.glsid.facerecognitionaccessapp.core.dto.db.AttemptDTO;
 
 public interface IAttemptDAO extends IDAO<Long, AttemptDTO> {
 }

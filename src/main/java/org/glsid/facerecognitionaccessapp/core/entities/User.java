@@ -8,17 +8,21 @@ public final class User {
     private Long id;
     private String firstName;
     private String lastName;
-    private String bio;
+    private String notes;
+    private boolean active;
     private List<Picture> pictures;
     private List<Permission> permissions;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public User() {}
+
     public User(
             Long id,
             String firstName,
             String lastName,
-            String bio,
+            String notes,
+            boolean active,
             List<Picture> pictures,
             LocalDateTime createdAt,
             LocalDateTime updatedAt
@@ -26,7 +30,8 @@ public final class User {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.bio = bio;
+        this.notes = notes;
+        this.active = active;
         this.pictures = pictures;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -44,8 +49,8 @@ public final class User {
         return lastName;
     }
 
-    public String bio() {
-        return bio;
+    public String notes() {
+        return notes;
     }
 
     public List<Picture> pictures() {
@@ -72,8 +77,8 @@ public final class User {
         this.lastName = lastName;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public void setPictures(List<Picture> pictures) {
@@ -96,7 +101,7 @@ public final class User {
         return Objects.equals(this.id, that.id) &&
                 Objects.equals(this.firstName, that.firstName) &&
                 Objects.equals(this.lastName, that.lastName) &&
-                Objects.equals(this.bio, that.bio) &&
+                Objects.equals(this.notes, that.notes) &&
                 Objects.equals(this.pictures, that.pictures) &&
                 Objects.equals(this.createdAt, that.createdAt) &&
                 Objects.equals(this.updatedAt, that.updatedAt);
@@ -104,18 +109,6 @@ public final class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, bio, pictures, createdAt, updatedAt);
-    }
-
-    @Override
-    public String toString() {
-        return "User[" +
-                "id=" + id + ", " +
-                "firstName=" + firstName + ", " +
-                "lastName=" + lastName + ", " +
-                "bio=" + bio + ", " +
-                "pictures=" + pictures + ", " +
-                "createdAt=" + createdAt + ", " +
-                "updatedAt=" + updatedAt + ']';
+        return Objects.hash(id, firstName, lastName, notes, pictures, createdAt, updatedAt);
     }
 }

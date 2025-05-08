@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    bio TEXT,
+    notes TEXT,
     active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -64,14 +64,14 @@ CREATE TABLE IF NOT EXISTS pictures (
     name VARCHAR(100) NOT NULL,
     picture_path VARCHAR(255) NOT NULL,
     type TEXT CHECK(type IN ('profile', 'attempt', 'room')),
+    embedding BLOB,
     user_id INTEGER, -- might be null if it is inserted from an unknown user attempting to access a door
     room_id INTEGER,
     attempt_id INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (room_id) REFERENCES doors(id) ON DELETE CASCADE,
-    FOREIGN KEY (attempt_id) REFERENCES attempts(id) ON DELETE CASCADE
+    FOREIGN KEY (room_id) REFERENCES doors(id) ON DELETE CASCADE
 );
 
 -- -- access_requests: requests from guests to access the doors
@@ -123,3 +123,9 @@ BEGIN
     UPDATE attempts SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
 END;
 
+
+INSERT INTO doors (name, description) VALUES ('Main Entrance', 'Main entrance door');
+INSERT INTO doors (name, description) VALUES ('Conference Room', 'Conference room door');
+INSERT INTO doors (name, description) VALUES ('Server Room', 'Server room door');
+INSERT INTO doors (name, description) VALUES ('Office 101', 'Office 101 door');
+INSERT INTO doors (name, description) VALUES ('Office 102', 'Office 102 door');

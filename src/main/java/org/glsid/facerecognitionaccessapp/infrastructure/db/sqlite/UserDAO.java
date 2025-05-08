@@ -1,7 +1,7 @@
 package org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
 
 import org.glsid.facerecognitionaccessapp.core.dao.IUserDAO;
-import org.glsid.facerecognitionaccessapp.core.dto.UserDTO;
+import org.glsid.facerecognitionaccessapp.core.dto.db.UserDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,13 +17,14 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public UserDTO save(UserDTO entity) {
-        String sql = "INSERT INTO users (first_name, last_name, bio, created_at, updated_at) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (first_name, last_name, notes, active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, entity.firstName());
             pstmt.setString(2, entity.lastName());
-            pstmt.setString(3, entity.bio());
-            pstmt.setTimestamp(4, Timestamp.valueOf(entity.createdAt()));
-            pstmt.setTimestamp(5, Timestamp.valueOf(entity.updatedAt()));
+            pstmt.setString(3, entity.notes());
+            pstmt.setBoolean(4, entity.active());
+            pstmt.setTimestamp(5, Timestamp.valueOf(entity.createdAt()));
+            pstmt.setTimestamp(6, Timestamp.valueOf(entity.updatedAt()));
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
@@ -32,7 +33,8 @@ public class UserDAO implements IUserDAO {
                                 generatedKeys.getLong(1),
                                 entity.firstName(),
                                 entity.lastName(),
-                                entity.bio(),
+                                entity.notes(),
+                                entity.active(),
                                 entity.createdAt(),
                                 entity.updatedAt()
                         );
@@ -47,13 +49,14 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public void update(UserDTO entity) {
-        String sql = "UPDATE users SET first_name = ?, last_name = ?, bio = ?, updated_at = ? WHERE id = ?";
+        String sql = "UPDATE users SET first_name = ?, last_name = ?, notes = ?, active = ?, updated_at = ? WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, entity.firstName());
             pstmt.setString(2, entity.lastName());
-            pstmt.setString(3, entity.bio());
-            pstmt.setTimestamp(4, Timestamp.valueOf(entity.updatedAt()));
-            pstmt.setLong(5, entity.id());
+            pstmt.setString(3, entity.notes());
+            pstmt.setBoolean(4, entity.active());
+            pstmt.setTimestamp(5, Timestamp.valueOf(entity.updatedAt()));
+            pstmt.setLong(6, entity.id());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -110,7 +113,8 @@ public class UserDAO implements IUserDAO {
                 rs.getLong("id"),
                 rs.getString("first_name"),
                 rs.getString("last_name"),
-                rs.getString("bio"),
+                rs.getString("notes"),
+                rs.getBoolean("active"),
                 rs.getTimestamp("created_at").toLocalDateTime(),
                 rs.getTimestamp("updated_at").toLocalDateTime()
         );

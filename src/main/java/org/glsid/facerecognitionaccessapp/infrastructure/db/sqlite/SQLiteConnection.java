@@ -14,9 +14,10 @@ import java.util.logging.Logger;
 
 public class SQLiteConnection {
     private static final Logger LOGGER = Logger.getLogger(SQLiteConnection.class.getName());
+    private static SQLiteConnection instance;
     private Connection connection;
 
-    public SQLiteConnection() {
+    private SQLiteConnection() {
         try {
             String appDataPath = getAppDataPath();
             String dbPath = getDatabasePath();
@@ -25,6 +26,13 @@ public class SQLiteConnection {
         } catch (SQLException | IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to initialize SQLite connection", e);
         }
+    }
+
+    public static synchronized SQLiteConnection getInstance() {
+        if (instance == null) {
+            instance = new SQLiteConnection();
+        }
+        return instance;
     }
 
     private String getAppDataPath() {

@@ -5,12 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Styles;
 import org.glsid.facerecognitionaccessapp.presentation.Constants.Views;
 import org.glsid.facerecognitionaccessapp.presentation.components.TitleBar;
-import org.glsid.facerecognitionaccessapp.presentation.events.ui.UiEvent;
 import org.glsid.facerecognitionaccessapp.presentation.router.Router;
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class WindowViewController implements Initializable {
     private HBox titleBarSlot;
 
     @FXML
-    private VBox mainSlot;
+    private StackPane mainSlot;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -8,6 +8,7 @@ public final class Picture {
     private String name;
     private String image_path;
     private Types type;
+    private float[] embeddings;
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
 
@@ -16,6 +17,7 @@ public final class Picture {
             String name,
             String image_path,
             Types type,
+            float[] embeddings,
             LocalDateTime created_at,
             LocalDateTime updated_at
     ) {
@@ -23,6 +25,7 @@ public final class Picture {
         this.name = name;
         this.image_path = image_path;
         this.type = type;
+        this.embeddings = embeddings;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
@@ -67,41 +70,20 @@ public final class Picture {
         this.type = type;
     }
 
+    public float[] getEmbeddings() {
+        return embeddings;
+    }
+
+    public void setEmbeddings(float[] embeddings) {
+        this.embeddings = embeddings;
+    }
+
     public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 
     public void setUpdated_at(LocalDateTime updated_at) {
         this.updated_at = updated_at;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Picture) obj;
-        return Objects.equals(this.id, that.id) &&
-                Objects.equals(this.name, that.name) &&
-                Objects.equals(this.image_path, that.image_path) &&
-                Objects.equals(this.type, that.type) &&
-                Objects.equals(this.created_at, that.created_at) &&
-                Objects.equals(this.updated_at, that.updated_at);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, image_path, type, created_at, updated_at);
-    }
-
-    @Override
-    public String toString() {
-        return "Picture[" +
-                "id=" + id + ", " +
-                "name=" + name + ", " +
-                "image_path=" + image_path + ", " +
-                "type=" + type + ", " +
-                "created_at=" + created_at + ", " +
-                "updated_at=" + updated_at + ']';
     }
 
     public enum Types {

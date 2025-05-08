@@ -15,7 +15,9 @@ public class Views {
     static public String ANALYTICS_VIEW     = views + "analytics_view.fxml";
     static public String ADMIN_LAYOUT_VIEW  = views + "admin_layout_view.fxml";
     static public String USER_CREATION_VIEW = views + "user_creation_view.fxml";
+    static public String DOOR_VIEW          = views + "door_view.fxml";
 
+    public static final String DEMO = components + "demo.fxml" ;
 
     public static final String TITLE_BAR        = components + "title_bar.fxml";
     public static final String USER_CARD        = components + "user_card.fxml";

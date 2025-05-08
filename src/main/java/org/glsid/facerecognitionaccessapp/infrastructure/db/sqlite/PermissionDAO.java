@@ -1,7 +1,7 @@
 package org.glsid.facerecognitionaccessapp.infrastructure.db.sqlite;
 
 import org.glsid.facerecognitionaccessapp.core.dao.IPermissionDAO;
-import org.glsid.facerecognitionaccessapp.core.dto.PermissionDTO;
+import org.glsid.facerecognitionaccessapp.core.dto.db.PermissionDTO;
 
 import java.sql.*;
 import java.util.ArrayList;

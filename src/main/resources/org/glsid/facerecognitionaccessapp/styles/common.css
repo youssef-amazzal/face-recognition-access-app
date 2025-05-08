@@ -14,6 +14,10 @@
     -fx-border-radius: 10;
 }
 
+.bg {
+    -fx-background-color: -color-bg-default;
+}
+
 .surface {
     -fx-background-color: -color-bg-inset;
 }
@@ -42,6 +46,22 @@
 .outlined {
     -fx-border-color: -color-border-default;
     -fx-border-width: 1;
+}
+
+
+.toast .ikonli-font-icon {
+    -fx-icon-size: 28;
+}
+.toast:success,
+.toast:success .ikonli-font-icon {
+    -fx-icon-code: "mdi2c-check-circle";
+    -fx-background-color: -color-success-emphasis;
+}
+
+.toast:failure,
+.toast:failure .ikonli-font-icon {
+    -fx-icon-code: "mdi2c-close-circle";
+    -fx-background-color: -color-danger-emphasis;
 }
 
 /*******************************************************************************

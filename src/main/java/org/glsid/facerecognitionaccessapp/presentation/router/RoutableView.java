@@ -5,8 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 
 public abstract class RoutableView {
-    @FXML
-    protected Parent root;
+    @FXML protected Parent root;
 
     protected RouteData getRouteData() {
         return (RouteData) root.getUserData();
